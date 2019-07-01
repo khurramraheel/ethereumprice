@@ -7,7 +7,7 @@ class ChartWithZoom extends Component {
 		super();
 		this.generateDataPoints = this.generateDataPoints.bind(this);
 	}
-	
+	// setInterval(this.generateDataPoints, 1000);
 	generateDataPoints(noOfDps) {
 		var xVal = 1, yVal = 100;
 		var dps = [];
@@ -33,7 +33,7 @@ class ChartWithZoom extends Component {
 			},
 			data: [{
 				type: "area",
-				dataPoints: this.generateDataPoints(500)
+				dataPoints: this.generateDataPoints(100)
 			}]
 		}
 		return (

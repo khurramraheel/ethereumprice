@@ -8,7 +8,7 @@ class Table extends Component{
   <table className="table table-dark  table-striped" style={{fontSize:'12px'}}>
     <thead className="text-uppercase">
       <tr>
-        <th>Period</th>
+        <th>yEAR</th>
         <th>Change</th>
         <th>Change%</th>
         <th>High</th>
@@ -52,6 +52,54 @@ class Table extends Component{
       </tr>
     </tbody>
   </table>
+
+  {/* Second table */}
+
+  <p style={{color:"#9ca3bc"}}>ETHEREUM PRICE % ANUAL CHANGE</p>            
+  <table className="table table-dark  table-striped" style={{fontSize:'12px'}}>
+    <thead className="text-uppercase">
+      <tr>
+      <th>YEAR</th>
+        <th>USD</th>
+        <th>AUD</th>
+        <th>BTC</th>
+        <th>CAD</th>
+        <th className="d-xs-none d-sm-none d-md-block">EUR</th>
+        <th className="d-xs-none d-sm-none d-md-block">GBP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2017</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td className="d-xs-none d-sm-none d-md-block">2648.26%</td>
+        <td className="d-xs-none d-sm-none d-md-block">2648.26%</td>
+
+      </tr>
+      <tr>
+        <td>2018</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td className="d-xs-none d-sm-none d-md-block">2648.26%</td>
+        <td className="d-xs-none d-sm-none d-md-block">2648.26%</td>
+      </tr>
+      <tr>
+        <td>2019</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
+        <td className="d-xs-none d-sm-none d-md-block">2648.26%</td>
+        <td className="d-xs-none d-sm-none d-md-block">2648.26%</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
         
         );

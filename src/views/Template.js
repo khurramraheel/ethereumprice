@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import ChartWithZoom from './overview/Chart with Zoom'
+import ChartWithZoom from './overview/Chart with Zoom';
+import Blog from './overview/blog';
+import Hcards from './overview/hcards'
 import Cards from './overview/cards';
 import Table from './overview/table';
+import Footer from './overview/footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import '../bootstrap.css';
@@ -115,12 +118,48 @@ class Template extends Component {
 					<p className="text-white text-center">Ethereum Price Chart - US Dollar (USD)</p>
 					<p className=" text-center" style={{fontSize:'8', fontWeight:'100', lineHeight:'0', color:'#9ca3bc'}}>The price of Ethereum (ETH/USD) today is $295.24 USD with a total market cap of $31,506,077,206.</p>
 					</div>
+					{/**Cards */}
 						<div className="my-5">
 							<Cards/>
-					</div>
+						 </div>
+									{/**tables */}
 								<div className=" pb-5">
 									<Table/>
+								 </div>
+
+									{/**Blog */}
+									<div className="container">
+									<Blog/>
 									</div>
+
+									<Hcards/>
+
+									<div className="container">
+										<div className="row">
+											<div className="col-md-2 offset-5">
+												<button className="w-100 btn btn-primary my-3">PREVIOUS UPDATES</button>
+											</div>
+										</div>
+									</div>
+
+									<div className="container-fluid" style={{background:'#2b344f'}}>
+											<div className="py-5 text-center text-white">
+												<h4>Subscribe to EthereumPrice.org</h4>
+												<h6>Receive email updates when new content is published</h6>
+												<form className="mx-auto py-4 border-0 text-white" style={{maxWidth:'445px'}}>
+												<div className="input-group mb-3">
+													<input type="text" className="form-control p-4 text-white border-0" placeholder="Your Email" style={{background:'#39425b', color:'white'
+}}/>
+													<div className="input-group-append">
+													<button className="input-group-text px-5 border-0" style={{background:'#4d5878', color:'white', fontWeight:'600'}}>SUBMIT</button>
+													</div>
+												</div>
+												</form>
+											</div>
+									</div>
+
+									{/**Footer */}
+									<Footer/>
 			</div>
     );
   }
