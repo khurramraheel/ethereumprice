@@ -29,15 +29,18 @@ class ChartWithZoom extends Component {
 				text: ""
 			},
 			axisY: {
-				includeZero: false
+				includeZero: false,
+				gridColor: 'black'
 			},
 			data: [{
 				type: "area",
-				dataPoints: this.generateDataPoints(100)
+				dataPoints: this.generateDataPoints(this.props.id),
+				color: 'orange',
 			}]
 		}
 		return (
 		  <div className="ChartWithZoom ">
+
 				<CanvasJSChart options = {options} 
 				/* onRef={ref => this.chart = ref} */
 				/>

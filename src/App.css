@@ -1,6 +1,19 @@
 .App {
   text-align: center;
 }
+#place::placeholder{
+color:white;
+}
+.mybtn{
+  color: #fff;
+    background-color: #2b7478;
+    border-color: #2b7478;
+}
+/* #navbarSupportedContent ul li:active{
+  color:red!important;
+  background-color: red;
+} */
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
