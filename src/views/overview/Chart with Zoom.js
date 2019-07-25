@@ -6,6 +6,25 @@ class ChartWithZoom extends Component {
   	constructor() {
 		super();
 		this.generateDataPoints = this.generateDataPoints.bind(this);
+		this.state={
+			value:0
+		}
+	}
+	componentDidMount(){
+		var value=this.generateDataPoints(this.props.id)
+		this.setState({
+			value:value
+		})
+	}
+	componentDidUpdate(prevprops){
+		if(prevprops.id!=this.props.id)
+		{
+			var value=this.generateDataPoints(this.props.id)
+			this.setState({
+				value:value
+			})
+		}
+		
 	}
 	// setInterval(this.generateDataPoints, 1000);
 	generateDataPoints(noOfDps) {
@@ -34,7 +53,7 @@ class ChartWithZoom extends Component {
 			},
 			data: [{
 				type: "area",
-				dataPoints: this.generateDataPoints(this.props.id),
+				dataPoints:this.state.value ,
 				color: 'orange',
 			}]
 		}

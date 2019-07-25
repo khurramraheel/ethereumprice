@@ -7,11 +7,11 @@ render() {
     return (
         <div className="container">
         <h2 className="text-white"> What is Ethereum</h2>
-        <p style={{color:'black'}}>Ethereum was first conceived in 2013 by its founder, Vitalik Buterin.
+        <p style={{color:'black', fontFamily:'monospace'}}>Ethereum was first conceived in 2013 by its founder, Vitalik Buterin.
              The Ethereum whitepaper described the blockchain as an evolution of Bitcoin’s,
               enabling not only payments but “smart contracts” too.</p>
 
-              <p style={{color:'black'}}>Using Ethereum’s “Turing complete” smart contract language,
+              <p style={{color:'black', fontFamily:'monospace'}}>Using Ethereum’s “Turing complete” smart contract language,
                    Solidity, developers are able to deploy a set of instructions
                     to the blockchain that operate indefinitely with a high degree
                      of finality and fraud-resistance. With the first block being
@@ -22,7 +22,7 @@ render() {
             <a href="#" className="" data-toggle="collapse" data-target="#blog">Read more</a>
             <div  id="blog" className="collapse">
 
-                <p style={{color:'black'}}>The rapid price increase of Ethereum has not only attracted
+                <p style={{color:'black', fontFamily:'monospace'}}>The rapid price increase of Ethereum has not only attracted
                      investors but developers too. Ethereum has tens of thousands
                       of developers in its open source community, each contributing
                        to the many layers of the “Ethereum stack”. This includes code

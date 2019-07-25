@@ -7,7 +7,7 @@ class Footer extends Component{
                     <div className="row">
                     <h5 className="text-white px-0">ETHEREUMPRICE.ORG</h5>
                     </div>
-                    <div className="row"> 
+                    <div className="row" style={{fontFamily:"'proxima nova', sans-serif"}}> 
                         <div className="col-md-6 pl-0">
                             <p className="" style={{color:'black'}}>This website is intended to provide
                                  a clear summary of Ethereum's current
@@ -26,21 +26,21 @@ class Footer extends Component{
                              content on this website should not be used when making
                               investment decisions. Investors should seek professional financial advice.
                             </p>
-                            <p><b>World Ethereum Prices</b></p>
-                            <ul className="d-inline-block" style={{fontSize:'14px'}}>
-                                <li><a href="#">Ethereum Price AUD</a></li>
-                                <li><a href="#">Ethereum Price BTC</a></li>
-                                <li><a href="#">Ethereum Price CAD</a></li>
-                                <li><a href="#">Ethereum Price EUR</a></li>
+                            <p className="text-left text-white"><b>World Ethereum Prices</b></p>
+                            <ul className="d-inline-block mx-2" style={{fontSize:'14px'}}>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price AUD</a></li>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price BTC</a></li>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price CAD</a></li>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price EUR</a></li>
                             </ul>
-                            <ul className="d-inline-block"  style={{fontSize:'14px'}}>
-                                <li><a href="#">Ethereum Price GBP</a></li>
-                                <li><a href="#">Ethereum Price INR</a></li>
-                                <li><a href="#">Ethereum Price JPY</a></li>
-                                <li><a href="#">Ethereum Price SEK</a></li>
+                            <ul className="d-inline-block mx-2"  style={{fontSize:'14px', color:"blue"}}>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price GBP</a></li>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price INR</a></li>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price JPY</a></li>
+                                <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price SEK</a></li>
                             </ul>
-                            <ul className="d-inline-block"  style={{fontSize:'14px'}}>
-                            <li><a href="#">Ethereum Price USD</a></li>                                
+                            <ul className="d-inline-block mx-2"  style={{fontSize:'14px'}}>
+                            <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price USD</a></li>                                
                             </ul>
                         </div>
                     </div>

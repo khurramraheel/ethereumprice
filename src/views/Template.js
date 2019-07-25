@@ -25,26 +25,67 @@ import {
 	NavLink,
   BrowserRouter
 } from "react-router-dom";
+import { noConflict } from 'q';
 // import ChartWithZoom from "./overview/Chart with Zoom";
 class Template extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			  value: 1001
+			  value: 1001,
+			  mydata:[100,120,90,154,365,125,364,254,153,249],
+			  valuetoshow:0,
+			  i:0,
+			  perc:0,
+			  color:'#00ea36'
 		}
 		
 	}
+	componentDidMount()
+	{
+		this.myinterval()
+	}
+	myinterval=()=>{
+  setInterval(()=>{fun()}, 3000);
+ var fun=()=>{
+	 let c_count = this.state.mydata[this.state.i];
+	 let o_count = this.state.mydata[this.state.i-1];
+	
+	if(this.state.i>=1){
+		this.setState({
+			perc:((c_count-o_count)/o_count*100).toFixed(2),
+		})
+	}
+	this.setState({
+		valuetoshow:c_count,
+		i:this.state.i+1
+	});
+
+	if(this.state.i===this.state.mydata.length){
+		this.setState({i:0})
+	}
+	if(this.state.perc<0){
+		this.setState({color:'#fff700'})
+	}
+	else{
+		this.setState({color:'#00ea36'})
+	}
+}
+}
   render() {    
-	let gvalue = this.state.value;
-
-
+	// let gvalue = this.state.value;
+	// this.myinterval()
+	// console.log(this.state.mydata[1])
+// 25/100*500+500=625
+// 625-500/500*100=?
+console.log(this.state.perc)
+	
     return (
-		<div className="" style={{boxSizing:'border-box' ,background: '#278287'}}>
+		<div className="" style={{boxSizing:'border-box' ,background: '#278287', fontFamily:'montserrat'}}>
 
 		{/* // <div className="" style={{boxSizing:'border-box' ,background: 'linear-gradient(to bottom, #181c2d, #1a1f32, #1d2236, #1f263b, #212940)'}}> */}
 			<nav className="navbar navbar-expand-sm fixed-top navbar-da" style={{backgroundColor:'#2b7478'}}>
 					<div className="container">
-						<h4><a href="#" className="text-light nav-link " style={{fontWeight:'700'}}>ethereumprice</a></h4>
+						<h4><a href="#" className="text-light nav-link " style={{fontWeight:'700', fontSize:'24px'}}>ethereumprice</a></h4>
 						<button className="navbar-toggler float-right" style={{color:'red'}} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon text-white btn btn-primary bg-white"></span>
   </button>
@@ -53,12 +94,12 @@ class Template extends Component {
 						<ul className="navbar-nav mx-auto">
 							<li className="nav-item">	<button className="btn btn-sm text-white active" onClick={()=> this.setState({value:100})}>1hr</button></li>
 								<li className="nav-item"><button className="btn btn-sm active text-white" onClick={() => this.setState({value:200})}>12hr</button></li>
-								<li className="nav-item"><button className="btn text-white active" onClick={() => this.setState({value:300})}>24hr</button></li>
-								<li className="nav-item"><button className="btn text-white" onClick={() => this.setState({value:500})}>1w</button></li>
-								<li className="nav-item"><button className="btn text-white" onClick={() => this.setState({value:600})}>1m</button></li>
-								<li className="nav-item"><a href="#" className="nav-link text-white" onClick={() => this.setState({value:700})}>3m</a></li>
-								<li className="nav-item"><button className="btn text-white" onClick={() => this.setState({value:800})}>1y</button></li>
-								<li className="nav-item"><button className="btn text-white" onClick={() => this.setState({value:1000})}>All</button></li>
+								<li className="nav-item"><button className="btn btn-sm text-white active" onClick={() => this.setState({value:300})}>24hr</button></li>
+								<li className="nav-item"><button className="btn btn-sm text-white" onClick={() => this.setState({value:500})}>1w</button></li>
+								<li className="nav-item"><button className="btn btn-sm text-white" onClick={() => this.setState({value:600})}>1m</button></li>
+								<li className="nav-item"><a href="#" className="btn btn-sm text-white" onClick={() => this.setState({value:700})}>3m</a></li>
+								<li className="nav-item"><button className="btn btn-sm text-white" onClick={() => this.setState({value:800})}>1y</button></li>
+								<li className="nav-item"><button className="btn btn-sm text-white" onClick={() => this.setState({value:1000})}>All</button></li>
 </ul>
 				<ul className="navbar-nav ml-auto d-inline">
 						<li className="nav-item d-inline"><button className="btn btn-dark">LIVE</button></li>
@@ -73,8 +114,8 @@ class Template extends Component {
 					<div className="container p-0">
 						<ul className="navbar-nav ml-auto d-inline-block">
 							<li className="nav-item dropdown d-inline-block">
-							<button className="btn btn-outline-dark text-white dropdown-toggle" data-toggle="dropdown">ETH/AUD</button>
-							<div className="dropdown-menu bg-dark text-white">
+							<button className="btn btn-outline-dark text-white dropdown-toggle"  style={{fontSize:'12px'}} data-toggle="dropdown">ETH/AUD</button>
+							<div className="dropdown-menu bg-dark text-white"  style={{fontSize:'12px'}}>
 									<a className="dropdown-item">ETH/BTC</a>
 									<a className="dropdown-item">ETH/BTC</a>
 									<a className="dropdown-item">ETH/JPY</a>
@@ -85,9 +126,9 @@ class Template extends Component {
 									<a className="dropdown-item">ETH/GBP</a>
 							</div>
 							</li>
-							<li className="nav-item dropdown pl-2 d-inline-block">
-							<button className="btn btn-outline-dark text-white dropdown-toggle" data-toggle="dropdown">Market Avg.</button>
-							<div className="dropdown-menu bg-dark text-white">
+							<li className="nav-item dropdown pl-2 d-inline-block" >
+							<button className="btn btn-outline-dark text-white dropdown-toggle" style={{fontSize:'12px'}} data-toggle="dropdown">Market Avg.</button>
+							<div className="dropdown-menu bg-dark text-white"  style={{fontSize:'12px'}}>
 									<a className="dropdown-item">Market Avg.</a>
 							</div>
 							</li>
@@ -98,8 +139,8 @@ class Template extends Component {
 			{/* <div className="container"> */}
 				<div className="row">
 					<div className="mx-auto">
-						<h1 className="text-white p-0" style={{fontSize:80, fontWeight:700, letterSpacing:-4}}>$256.13%</h1>
-						<h1 className="text-white p-0" style={{textAlign:"center", fontWeight:'400'}}>132.3%</h1>
+						<h1 className="text-white p-0" style={{fontSize:80, fontWeight:700, letterSpacing:-4}}>${this.state.valuetoshow}</h1>
+						<h1 className=" p-0" style={{textAlign:"center",color:this.state.color, fontWeight:'400',fontSize:'40px',fontFamily:'montserrat, sans-serif'}}>{this.state.perc}%</h1>
 					</div>
 				</div>
 				</div>
@@ -126,7 +167,7 @@ class Template extends Component {
 				</div>
 
 					<div className="container pt-5 my-5">
-					<ChartWithZoom id={gvalue} />
+					<ChartWithZoom id={this.state.value} />
 					</div>
 					<div className="container">
 					<p className="text-white text-center">Ethereum Price Chart - US Dollar (USD)</p>
