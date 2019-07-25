@@ -71,6 +71,13 @@ class Template extends Component {
 	}
 }
 }
+openNav() {
+	document.getElementById("mySidepanel").style.width = "300px";
+  }
+  
+  closeNav() {
+	document.getElementById("mySidepanel").style.width = "0";
+  }
   render() {    
 	// let gvalue = this.state.value;
 	// this.myinterval()
@@ -86,7 +93,8 @@ console.log(this.state.perc)
 			<nav className="navbar navbar-expand-sm fixed-top navbar-da" style={{backgroundColor:'#2b7478'}}>
 					<div className="container">
 						<h4><a href="#" className="text-light nav-link " style={{fontWeight:'700', fontSize:'24px'}}>ethereumprice</a></h4>
-						<button className="navbar-toggler float-right" style={{color:'red'}} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<button className="navbar-toggler float-right" 
+						style={{color:'red'}} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon text-white btn btn-primary bg-white"></span>
   </button>
   
@@ -103,9 +111,25 @@ console.log(this.state.perc)
 </ul>
 				<ul className="navbar-nav ml-auto d-inline">
 						<li className="nav-item d-inline"><button className="btn btn-dark">LIVE</button></li>
-						<li className="nav-item d-inline"></li>
 						<li className="nav-item d-inline"><button className="btn btn-success ml-2">BUY ETHEREUM</button></li>
+						<li className="nav-item d-inline"><button class=" btn" onClick={this.openNav}><i class="fas fa-ellipsis-h fa-rotate-90 fa-inverse" style={{fontSize:'10'}}></i></button> </li>
 				</ul>
+				<div id="mySidepanel" className="sidepanel text-white bg-dark">
+					<a href="javascript:void(0)" className="closebtn text-white" style={{border:'none'}} onClick={this.closeNav}>×</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/augur.png" alt=" icon"/>Augur</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/bitcoin.png" alt=" icon"/>Bitcoin</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/digix.png" alt=" icon"/>Digix</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ethereum.png" alt=" icon"/>Ethereum</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ethereumclassic.png" alt=" icon"/>Ethereum Classic</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/eos.png" alt=" icon"/>EOS</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/gnosis.png" alt=" icon"/>Gnosis</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/golem.png" alt=" icon"/>Golem</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/litecoin.png" alt=" icon"/>Litcoin </a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/monero.png" alt=" icon"/>Ethereum</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/neo.png" alt=" icon"/>NEO</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ripple.png" alt=" icon"/>Ripple</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/taas.png" alt=" icon"/>Taas</a>
+				</div>
 						</div>
 						</div>
 			</nav>		  
