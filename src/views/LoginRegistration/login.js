@@ -56,7 +56,7 @@ class Login extends Component {
     this.props.login(user);
     
     if(token) {
-      return this.props.history.push('/')
+       this.props.history.push('/')
     }
     
   };
