@@ -23,6 +23,7 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: true
       };
+      break;
     case USER_LOADED:
       return {
         ...state,
@@ -30,6 +31,7 @@ export default function(state = initialState, action) {
         isLoading: false,
         user: action.payload
       };
+      break;
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       localStorage.setItem('token', action.payload.token);
@@ -39,6 +41,7 @@ export default function(state = initialState, action) {
         isAuthenticated: true,
         isLoading: false
       };
+      break;
     case LOGIN_FAILED:
     case REGISTER_FAILED:
     case AUTH_ERROR:
@@ -51,6 +54,7 @@ export default function(state = initialState, action) {
             token:null,
             user: null
         }
+      break;
     default:
       return state;
   }

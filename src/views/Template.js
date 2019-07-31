@@ -1,30 +1,32 @@
-import React, { Component, Fragment } from 'react';
-import ChartWithZoom from './overview/Chart with Zoom';
-import Blog from './overview/blog';
-import Hcards from './overview/hcards'
-import Cards from './overview/cards';
-import Table from './overview/table';
-import Footer from './overview/footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min';
-import '../bootstrap.css';
-import '../App.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
-import ListGroup from 'react-bootstrap/ListGroup';
-import {Router, Route} from 'react-router';
+import React, { Component, Fragment } from "react";
+import ChartWithZoom from "./overview/Chart with Zoom";
+import Blog from "./overview/blog";
+import Hcards from "./overview/hcards";
+import Cards from "./overview/cards";
+import Table from "./overview/table";
+import Footer from "./overview/footer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min";
+import "../bootstrap.css";
+import "../App.css";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import ListGroup from "react-bootstrap/ListGroup";
+import { Router, Route } from "react-router";
 //  import FaIconPack from 'react-icons/lib/fa';
 //  import bell from 'react-icons/lib/fa/bell-o';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from "react-redux";
-import { logout } from "../Redux/Actions/authActions";
+import { logout, loaduser } from "../Redux/Actions/authActions";
 
 import { Link, NavLink, BrowserRouter } from "react-router-dom";
 import { noConflict } from "q";
 import PropTypes from "prop-types";
+import LoginModal from './LoginRegistration/loginModal/LoginModal'
+import RegisterModal from './LoginRegistration/registerModal/RegisterModal'
 // import ChartWithZoom from "./overview/Chart with Zoom";
 class Template extends Component {
   constructor(props) {
@@ -44,6 +46,7 @@ class Template extends Component {
     auth: PropTypes.object.isRequired
   };
   componentDidMount() {
+    this.props.loaduser()
     this.myinterval();
   }
   myinterval = () => {
@@ -68,7 +71,7 @@ class Template extends Component {
         this.setState({ i: 0 });
       }
       if (this.state.perc < 0) {
-        this.setState({ color: "#fff700" });
+        this.setState({ color: "#CC0000" });
       } else {
         this.setState({ color: "#00ea36" });
       }
@@ -81,49 +84,43 @@ class Template extends Component {
     // console.log(this.state.mydata[1])
     // 25/100*500+500=625
     // 625-500/500*100=?
-    console.log(this.state.perc);
+    // console.log(this.state.perc);
 
     const authLinks = (
       <Fragment>
-        {/* <li className="nav-item d-inline">
-            <button className = "btn btn-dark">{user ? user.username : ""}</button>
-        </li>
-        <li className="nav-item d-inline">
-          <button className="btn btn-dark" onClick={this.props.logout}>
-            LOG OUT
-          </button>
-        </li> */}
         <li className="nav-item dropdown pl-2 d-inline-block">
-                  <button
-                    className="btn btn-dark dropdown-toggle"
-                    style={{ fontSize: "12px" }}
-                    data-toggle="dropdown"
-                  >
-                    {user ? user.username : ''}
-                  </button>
-                  <div
-                    className="dropdown-menu bg-dark text-white"
-                    style={{ fontSize: "12px" }}
-                  >
-                    <button className="btn btn-dark" onClick={this.props.logout}>
-            Log Out
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            style={{ fontSize: "10px" }}
+            data-toggle="dropdown"
+          >
+            {user ? user.username : ""}
           </button>
-                  </div>
-                </li>
+          <div
+            className="dropdown-menu bg-dark text-white"
+            style={{ fontSize: "12px" }}
+          >
+            <button className="btn btn-dark" onClick={this.props.logout}>
+              Log Out
+            </button>
+          </div>
+        </li>
       </Fragment>
     );
 
     const guestLinks = (
       <Fragment>
         <li className="nav-item d-inline">
-          <a href="/register">
-            <button className="btn btn-success ml-2">SIGN UP</button>
-          </a>
+          {/* <Link to="/register"> */}
+            <button className="btn" style={{ fontSize: "10px",width:'100px', marginRight:'-10px' }}><RegisterModal /></button>
+          {/* </Link> */}
+          {/* <LoginModal /> */}
         </li>
         <li className="nav-item d-inline">
-          <a href="/login">
-            <button className="btn btn-success ml-2">Log In</button>
-          </a>
+          {/* <Link to="/login"> */}
+            <button className="btn" style={{ fontSize: "10px", width:'50px', marginLeft:'-10px' }}><LoginModal /></button>
+          {/* </Link> */}
+        
         </li>
       </Fragment>
     );
@@ -133,24 +130,24 @@ class Template extends Component {
         className=""
         style={{
           boxSizing: "border-box",
-          background: "#278287",
+          background: "#fff",
           fontFamily: "montserrat"
         }}
       >
         {/* // <div className="" style={{boxSizing:'border-box' ,background: 'linear-gradient(to bottom, #181c2d, #1a1f32, #1d2236, #1f263b, #212940)'}}> */}
         <nav
           className="navbar navbar-expand-sm fixed-top navbar-da"
-          style={{ backgroundColor: "#2b7478" }}
+          style={{ backgroundColor: "#555" }}
         >
           <div className="container">
             <h4>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="text-light nav-link "
                 style={{ fontWeight: "700", fontSize: "24px" }}
               >
                 ethereumprice
-              </a>
+              </Link>
             </h4>
             <button
               className="navbar-toggler float-right"
@@ -242,7 +239,7 @@ class Template extends Component {
                   <button className="btn btn-dark">LIVE</button>
                 </li>
                 <li className="nav-item d-inline">
-                  <button className="btn btn-success ml-2">BUY ETHEREUM</button>
+                  <button className="btn btn-light ml-2">BUY ETHEREUM</button>
                 </li>
                 {/* {isAuthenticated ? authLinks : guestLinks} */}
               </ul>
@@ -256,14 +253,14 @@ class Template extends Component {
                 <li className="nav-item dropdown d-inline-block">
                   <button
                     className="btn btn-outline-dark text-white dropdown-toggle"
-                    style={{ fontSize: "12px" }}
+                    style={{ fontSize: "12px", backgroundColor:'#343A40', fontFamily: " montserrat,sans-serif" }}
                     data-toggle="dropdown"
                   >
                     ETH/AUD
                   </button>
                   <div
                     className="dropdown-menu bg-dark text-white"
-                    style={{ fontSize: "12px" }}
+                    style={{ fontSize: "12px", fontFamily: " montserrat,sans-serif"}}
                   >
                     <a className="dropdown-item">ETH/BTC</a>
                     <a className="dropdown-item">ETH/BTC</a>
@@ -278,19 +275,19 @@ class Template extends Component {
                 <li className="nav-item dropdown pl-2 d-inline-block">
                   <button
                     className="btn btn-outline-dark text-white dropdown-toggle"
-                    style={{ fontSize: "12px" }}
+                    style={{ fontSize: "12px",backgroundColor:'#343A40', fontFamily: " montserrat,sans-serif" }}
                     data-toggle="dropdown"
                   >
                     Market Avg.
                   </button>
                   <div
                     className="dropdown-menu bg-dark text-white"
-                    style={{ fontSize: "12px" }}
+                    style={{ fontSize: "12px", fontFamily: " montserrat,sans-serif" }}
                   >
                     <a className="dropdown-item">Market Avg.</a>
                   </div>
                 </li>
-                {isAuthenticated ? authLinks : guestLinks}                
+                {isAuthenticated ? authLinks : guestLinks}
               </ul>
             </div>
           </nav>
@@ -299,8 +296,8 @@ class Template extends Component {
           <div className="row">
             <div className="mx-auto">
               <h1
-                className="text-white p-0"
-                style={{ fontSize: 80, fontWeight: 700, letterSpacing: -4 }}
+                className=" p-0"
+                style={{ fontSize: 80, fontWeight: 700, letterSpacing: -4 ,fontFamily: " montserrat,sans-serif"}}
               >
                 ${this.state.valuetoshow}
               </h1>
@@ -322,27 +319,27 @@ class Template extends Component {
 
         <div className="container pt-5">
           <div className="row">
-            <div className="col-md-3 col-sm-6 col-6">
-              <h1 className="text-white p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black" }}>
+            <div className="col-md-3 col-sm-6 col-6" style = {{ fontFamily: " montserrat,sans-serif"}}>
+              <h1 className=" p-0">$256.13%</h1>
+              <a className=" p-0" style={{ color: "black", fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR CHANGE
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
-              <h1 className="text-white p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black" }}>
+              <h1 className=" p-0">$256.13%</h1>
+              <a className=" p-0" style={{ color: "black" ,fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR HIGH
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
-              <h1 className="text-white p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black" }}>
+              <h1 className=" p-0">$256.13%</h1>
+              <a className=" p-0" style={{ color: "black", fontFamily: " montserrat,sans-serif" }}>
                 24 HOUR LOW
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
-              <h1 className="text-white p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black" }}>
+              <h1 className=" p-0">$256.13%</h1>
+              <a className=" p-0" style={{ color: "black",fontFamily: " montserrat,sans-serif" }}>
                 MARKET CAP
               </a>
             </div>
@@ -353,9 +350,10 @@ class Template extends Component {
           <ChartWithZoom id={this.state.value} />
         </div>
         <div className="container">
-          <p className="text-white text-center">
+          <p className="text-black text-center">
             Ethereum Price Chart - US Dollar (USD)
           </p>
+          <br />
           <p
             className=" text-center"
             style={{
@@ -397,11 +395,11 @@ class Template extends Component {
 
         <div
           className="container-fluid"
-          style={{ background: "rgb(54, 151, 156)" }}
+          style={{ background: "grey" }}
         >
           <div className="py-5 text-center text-white">
-            <h4>Subscribe to EthereumPrice.org</h4>
-            <h6>Receive email updates when new content is published</h6>
+            <h4 style = {{ fontFamily: "monteserrat,sans-serif"}}>Subscribe to EthereumPrice.org</h4>
+            <h6 style = {{ fontFamily: "monteserrat,sans-serif"}}>Receive email updates when new content is published</h6>
             <form
               className="mx-auto py-4 border-0 text-white"
               style={{ maxWidth: "445px" }}
@@ -412,7 +410,7 @@ class Template extends Component {
                   id="place"
                   className="form-control p-4 text-white border-0"
                   placeholder="Your Email"
-                  style={{ background: "#278287", color: "white" }}
+                  style={{ background: "#23272B", color: "white" }}
                 />
                 <div className="input-group-append">
                   <button
@@ -440,5 +438,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logout }
+  { logout, loaduser }
 )(Template);

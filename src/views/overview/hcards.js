@@ -13,7 +13,7 @@ class Hcards extends Component{
           <div className="col-md-8 px-3">
             <div className="card-block px-3 text-left">
               <h4 className="card-title text-white">Lorem ipsum dolor sit amet</h4>
-              <small className="card-text" style={{color:'black'}}>Published June 19 </small>
+              <small className="card-text" style={{color:'black',}}>Published June 19 </small>
               <p className="card-text" style={{color:'black'}}>Duis aute irure dolor in reprehenderit in
                voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                Excepteur sint occaecat cupidatat non proident, sunt in culpa

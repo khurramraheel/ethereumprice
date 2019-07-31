@@ -1,3 +1,8 @@
+
+p,h1,h4,h6,small, td{
+  font-family: "monteserrat",sans-serif
+}
+
 /*sidebar collapse start*/
 .sidepanel  {
   width: 0;
@@ -62,8 +67,8 @@ color:white;
 }
 .mybtn{
   color: #fff;
-    background-color: #2b7478;
-    border-color: #2b7478;
+    background-color: #2C3034;
+    border-color: #2C3034;
 }
 /* #navbarSupportedContent ul li:active{
   color:red!important;
@@ -90,6 +95,18 @@ color:white;
 
 .App-link {
   color: #61dafb;
+}
+.table-data{
+font-size: 11px;
+font-weight: 600;
+text-align: left;
+border-top: 2px solid #ccc;
+border-bottom: 2px solid #ccc;
+
+}
+
+.table-data tr:nth-child(n+1){
+  background: #ccc
 }
 
 @keyframes App-logo-spin {

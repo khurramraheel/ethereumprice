@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { login } from '../../Redux/Actions/authActions'
 import { clearErrors } from '../../Redux/Actions/errorActions'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -19,7 +19,7 @@ class Login extends Component {
   };
 
   static propTypes = {
-    isAuthenticated: PropTypes.bool,
+    auth: PropTypes.object.isRequired,
     error: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired
@@ -27,6 +27,8 @@ class Login extends Component {
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
+    const token = this.props.auth.token;
+
 
     if (error !== prevProps.error) {
       //check for register error
@@ -34,7 +36,11 @@ class Login extends Component {
         this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });
+
       }
+    }
+    if(token) {
+      this.props.history.push('/')
     }
   }
 
@@ -46,7 +52,7 @@ class Login extends Component {
 
   handleLogin = e => {
     e.preventDefault();
-    const token = localStorage.getItem('token')
+    // const token = this.props.auth.token;
     const { email, password } = this.state;
 
     const user = {
@@ -55,9 +61,9 @@ class Login extends Component {
     }
     this.props.login(user);
     
-    if(token) {
-       this.props.history.push('/')
-    }
+    // if(token) {
+    //    this.props.history.push('/')
+    // }
     
   };
   render() {
@@ -72,14 +78,13 @@ class Login extends Component {
         </header>
         <section>
           <div id="container_demo">
-            <a className="hiddenanchor" id="toregister" />
-            <a className="hiddenanchor" id="tologin" />
+          
             <div id="wrapper">
               <div id="login" className="animate form">
                 <form onSubmit = { this.handleLogin } autoComplete="on">
                   <h1>Log in</h1>
                   <p>
-                    <label htmlFor="email" className="uname" data-icon="u">
+                    <label htmlFor="email" className="youmail" data-icon="e">
                       {" "}
                       Your email {" "}
                     </label>
@@ -124,9 +129,9 @@ class Login extends Component {
                   </p>
                   <p className="change_link">
                     Not a member yet ?
-                    <a href="/register" className="to_register">
+                    <Link to="/register" className="to_register">
                       Join us
-                    </a>
+                    </Link>
                   </p>
                 </form>
               </div>
@@ -141,7 +146,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
   error: state.error
 });
 export default connect(mapStateToProps, { login, clearErrors })(Login);

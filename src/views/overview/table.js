@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 // import img1 from './image/img1.png';
+import '../../App.css'
 class Table extends Component{
     render(){
         return(
             <div className="container">
-  <p style={{color:"white"}}>ETHEREUM PERFORMANCE USD</p>            
-  <table className="table table-primary  table-striped" style={{fontSize:'12px'}}>
+  <p style={{color:"#2C3034", float: 'left'}}>ETHEREUM PERFORMANCE USD</p>            
+  <table className="table table-striped table-data">
     <thead className="text-uppercase">
       <tr>
         <th>yEAR</th>
@@ -55,8 +56,8 @@ class Table extends Component{
 
   {/* Second table */}
 
-  <p style={{color:"white"}}>ETHEREUM PRICE % ANUAL CHANGE</p>            
-  <table className="table table-primary  table-striped" style={{fontSize:'12px'}}>
+  <p style={{color:"#2C3034", float: 'left'}}>ETHEREUM PRICE % ANUAL CHANGE</p>            
+  <table className="table table-striped table-data">
     <thead className="text-uppercase">
       <tr>
       <th>YEAR</th>
@@ -64,8 +65,8 @@ class Table extends Component{
         <th>AUD</th>
         <th>BTC</th>
         <th>CAD</th>
-        <th className="d-none d-sm-none d-md-block">EUR</th>
-        <th className="d-none d-sm-none d-md-block">GBP</th>
+        <th>EUR</th>
+        <th>GBP</th>
         
       </tr>
     </thead>
@@ -76,8 +77,8 @@ class Table extends Component{
         <td>2648.26%</td>
         <td>2648.26%</td>
         <td>2648.26%</td>
-        <td className="d-none d-sm-none d-md-block">2648.26%</td>
-        <td className="d-none d-sm-none d-md-block">2648.26%</td>
+        <td>2648.26%</td>
+        <td >2648.26%</td>
 
       </tr>
       <tr>
@@ -86,8 +87,8 @@ class Table extends Component{
         <td>2648.26%</td>
         <td>2648.26%</td>
         <td>2648.26%</td>
-        <td className="d-none d-sm-none d-md-block">2648.26%</td>
-        <td className="d-none d-sm-none d-md-block">2648.26%</td>
+        <td>2648.26%</td>
+        <td >2648.26%</td>
       </tr>
       <tr>
         <td>2019</td>
@@ -95,8 +96,8 @@ class Table extends Component{
         <td>2648.26%</td>
         <td>2648.26%</td>
         <td>2648.26%</td>
-        <td className="d-none d-sm-none d-md-block">2648.26%</td>
-        <td className="d-none d-sm-none d-md-block">2648.26%</td>
+        <td>2648.26%</td>
+        <td>2648.26%</td>
       </tr>
     </tbody>
   </table>

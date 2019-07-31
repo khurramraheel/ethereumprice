@@ -4,6 +4,7 @@ import "./css/demo.css";
 // import '../favicon.ico';
 import "./css/style.css";
 import "./css/animate-custom.css";
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { register } from "../../Redux/Actions/authActions";
 import { clearErrors } from '../../Redux/Actions/errorActions'
@@ -18,7 +19,7 @@ class SignUp extends Component {
   };
 
   static propTypes = {
-    isAuthenticated: PropTypes.bool,
+    auth: PropTypes.bool,
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired
@@ -26,6 +27,7 @@ class SignUp extends Component {
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
+    const token = this.props.auth.token;
 
     if (error !== prevProps.error) {
       //check for register error
@@ -35,6 +37,10 @@ class SignUp extends Component {
         this.setState({ msg: null });
       }
     }
+    if(token){
+      this.props.history.push('/')
+    }
+    
   }
   handleChange = evt => {
     this.setState({
@@ -44,7 +50,7 @@ class SignUp extends Component {
 
   register = e => {
     e.preventDefault();
-    const token = localStorage.getItem('token')
+  
     const { username, email, password } = this.state;
 
     //Create User Object
@@ -56,9 +62,7 @@ class SignUp extends Component {
 
     this.props.register(newUser);
 
-    if(token) {
-      return this.props.history.push('/')
-    }
+  
 
     // setInterval(() => {
     //   this.props.clearErrors()
@@ -77,8 +81,7 @@ class SignUp extends Component {
         </header>
         <section>
           <div id="container_demo">
-            <a className="hiddenanchor" id="toregister" />
-            <a className="hiddenanchor" id="tologin" />
+           
             <div id="wrapper">
               <div id="login" className="animate form">
                 <form onSubmit={this.register} autoComplete="on">
@@ -149,9 +152,9 @@ class SignUp extends Component {
                   </p>
                   <p className="change_link">
                     Already a member ?
-                    <a href="/login" className="to_register">
+                    <Link to="/login" className="to_register">
                       Go and log in{" "}
-                    </a>
+                    </Link>
                   </p>
                 </form>
               </div>
@@ -164,7 +167,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
   error: state.error
 });
 export default connect(

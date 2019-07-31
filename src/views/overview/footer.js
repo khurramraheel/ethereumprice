@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 class Footer extends Component{
     render(){
         return(
-            <div className="container-fluid" style={{background:'#2b7478'}}>
+            <div className="container-fluid" style={{background:'#333'}}>
                 <div className="container py-5">
                     <div className="row">
                     <h5 className="text-white px-0">ETHEREUMPRICE.ORG</h5>
                     </div>
                     <div className="row" style={{fontFamily:"'proxima nova', sans-serif"}}> 
                         <div className="col-md-6 pl-0">
-                            <p className="" style={{color:'black'}}>This website is intended to provide
+                            <p className="" style={{color:'#ddd',lineHeight:"20px"}}>This website is intended to provide
                                  a clear summary of Ethereum's current
                                   and historical price as well as important
                                    updates from the industry. I've also included
@@ -19,7 +19,7 @@ class Footer extends Component{
                                        are recorded at midnight UTC. Bookmark us!</p>
                         </div>
 
-                        <div className="col-md-6" style={{color:'black'}}>
+                        <div className="col-md-6" style={{color:'#ddd',lineHeight:"20px"}}>
                             <p >
                             Please note, weighted average exchange prices update very
                              slowly for some ETH and token pairs. <b>Disclaimer:</b> 

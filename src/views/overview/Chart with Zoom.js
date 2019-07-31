@@ -49,18 +49,19 @@ class ChartWithZoom extends Component {
 			},
 			axisY: {
 				includeZero: false,
-				gridColor: 'black'
+				gridColor: '#ccc'
 			},
 			data: [{
 				type: "area",
 				dataPoints:this.state.value ,
-				color: 'orange',
+				color: '#CC3300',
 			}]
 		}
 		return (
 		  <div className="ChartWithZoom ">
 
-				<CanvasJSChart options = {options} 
+				<CanvasJSChart options = {options}
+				style = {{color:'black'}} 
 				/* onRef={ref => this.chart = ref} */
 				/>
 				
