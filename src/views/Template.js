@@ -77,6 +77,13 @@ class Template extends Component {
       }
     };
   };
+  openNav() {
+    document.getElementById("mySidepanel").style.width = "300px";
+    }
+    
+    closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+    }
   render() {
     const { isAuthenticated, user } = this.props.auth;
     // let gvalue = this.state.value;
@@ -110,15 +117,14 @@ class Template extends Component {
 
     const guestLinks = (
       <Fragment>
-        <li className="nav-item d-inline">
+        <li className="pl-2 btn-group" role="group" aria-label="Basic example">
           {/* <Link to="/register"> */}
-            <button className="btn" style={{ fontSize: "10px",width:'100px', marginRight:'-10px' }}><RegisterModal /></button>
+            <RegisterModal />
           {/* </Link> */}
           {/* <LoginModal /> */}
-        </li>
-        <li className="nav-item d-inline">
+        
           {/* <Link to="/login"> */}
-            <button className="btn" style={{ fontSize: "10px", width:'50px', marginLeft:'-10px' }}><LoginModal /></button>
+            <LoginModal />
           {/* </Link> */}
         
         </li>
@@ -241,8 +247,26 @@ class Template extends Component {
                 <li className="nav-item d-inline">
                   <button className="btn btn-light ml-2">BUY ETHEREUM</button>
                 </li>
+                <li className="nav-item d-inline"><button class=" btn" onClick={this.openNav}><i class="fas fa-ellipsis-h fa-rotate-90 fa-inverse" style={{fontSize:'10'}}></i></button> </li>
+
                 {/* {isAuthenticated ? authLinks : guestLinks} */}
               </ul>
+              <div id="mySidepanel" className="sidepanel text-white bg-dark">
+					<a href="javascript:void(0)" className="closebtn text-white" style={{border:'none'}} onClick={this.closeNav}>×</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/augur.png" alt=" icon"/>Augur</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/bitcoin.png" alt=" icon"/>Bitcoin</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/digix.png" alt=" icon"/>Digix</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ethereum.png" alt=" icon"/>Ethereum</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ethereumclassic.png" alt=" icon"/>Ethereum Classic</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/eos.png" alt=" icon"/>EOS</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/gnosis.png" alt=" icon"/>Gnosis</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/golem.png" alt=" icon"/>Golem</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/litecoin.png" alt=" icon"/>Litcoin </a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/monero.png" alt=" icon"/>Ethereum</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/neo.png" alt=" icon"/>NEO</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ripple.png" alt=" icon"/>Ripple</a>
+					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/taas.png" alt=" icon"/>Taas</a>
+				</div>
             </div>
           </div>
         </nav>
@@ -287,7 +311,9 @@ class Template extends Component {
                     <a className="dropdown-item">Market Avg.</a>
                   </div>
                 </li>
+                <li className="d-inline-block">
                 {isAuthenticated ? authLinks : guestLinks}
+                </li>
               </ul>
             </div>
           </nav>

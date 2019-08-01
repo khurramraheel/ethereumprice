@@ -26,7 +26,7 @@ class LoginModal extends Component {
   };
 
   static propTypes = {
-    auth: PropTypes.object.isRequired,
+    auth: PropTypes.bool,
     error: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired
@@ -82,7 +82,7 @@ handleLogin = e => {
       const { email, password } = this.state
     return (
       <div>
-        <Button color="secondary" onClick={this.toggle}>
+        <Button type ="button" color="secondary" onClick={this.toggle} className="btn btn-outline-dark bg-dark text-white " style={{fontSize:"12px", borderRadius:"0 5px 5px 0"}}>
           Login
         </Button>
         <Modal

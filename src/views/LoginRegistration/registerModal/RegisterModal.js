@@ -90,7 +90,7 @@ class LoginModal extends Component {
     const { username, email, password, password_confirm} = this.state
     return (
       <div>
-        <Button color="secondary" onClick={this.toggle}>
+        <Button type="button" color="secondary" onClick={this.toggle} className="btn bg-dark btn-outline-dark text-white pl-2" style={{fontSize:"12px", borderRadius:"5px 0px 0px 5px"}}>
           Sign Up
         </Button>
         <Modal
