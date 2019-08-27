@@ -33,7 +33,7 @@ class Footer extends Component{
                                 <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price CAD</a></li>
                                 <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price EUR</a></li>
                             </ul>
-                            <ul className="d-inline-block mx-2"  style={{fontSize:'14px', color:"blue"}}>
+                            <ul className="d-inline-block mx-2"  style={{fontSize:'14px'}}>
                                 <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price GBP</a></li>
                                 <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price INR</a></li>
                                 <li><a href="#" style={{textDecoration:"none", color:'yellow'}}>Ethereum Price JPY</a></li>

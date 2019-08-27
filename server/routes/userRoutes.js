@@ -38,11 +38,7 @@ router.post("/register", (req, res) => {
               if (err) throw err;
               res.json({
                   token,
-                user: {
-                  id: user.id,
-                  name: user.username,
-                  email: user.email
-                }
+                user
               });
             }
           );
@@ -79,11 +75,7 @@ router.post("/login", (req, res) => {
               if (err) throw err;
               res.json({
                   token,
-                user: {
-                  id: user.id,
-                  name: user.username,
-                  email: user.email
-                }
+                user
               });
             }
           );

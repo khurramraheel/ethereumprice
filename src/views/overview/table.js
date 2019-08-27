@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import img1 from './image/img1.png';
-import '../../App.css'
+// import '../../App.css'
 class Table extends Component{
     render(){
         return(

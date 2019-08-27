@@ -5,17 +5,9 @@ import Hcards from "./overview/hcards";
 import Cards from "./overview/cards";
 import Table from "./overview/table";
 import Footer from "./overview/footer";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min";
-import "../bootstrap.css";
-import "../App.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
-import { Router, Route } from "react-router";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.min";
+// import "../bootstrap.css";
 //  import FaIconPack from 'react-icons/lib/fa';
 //  import bell from 'react-icons/lib/fa/bell-o';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -46,7 +38,8 @@ class Template extends Component {
     auth: PropTypes.object.isRequired
   };
   componentDidMount() {
-    this.props.loaduser()
+    // this.props.loaduser()
+    
     this.myinterval();
   }
   myinterval = () => {
@@ -136,7 +129,7 @@ class Template extends Component {
         className=""
         style={{
           boxSizing: "border-box",
-          background: "#fff",
+          // background: "#fff",
           fontFamily: "montserrat"
         }}
       >
@@ -247,11 +240,11 @@ class Template extends Component {
                 <li className="nav-item d-inline">
                   <button className="btn btn-light ml-2">BUY ETHEREUM</button>
                 </li>
-                <li className="nav-item d-inline"><button class=" btn" onClick={this.openNav}><i class="fas fa-ellipsis-h fa-rotate-90 fa-inverse" style={{fontSize:'10'}}></i></button> </li>
+                {/* <li className="nav-item d-inline"><button class=" btn" onClick={this.openNav}><i class="fas fa-ellipsis-h fa-rotate-90 fa-inverse" style={{fontSize:'10'}}></i></button> </li> */}
 
                 {/* {isAuthenticated ? authLinks : guestLinks} */}
               </ul>
-              <div id="mySidepanel" className="sidepanel text-white bg-dark">
+              {/* <div id="mySidepanel" className="sidepanel text-white bg-dark">
 					<a href="javascript:void(0)" className="closebtn text-white" style={{border:'none'}} onClick={this.closeNav}>×</a>
 					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/augur.png" alt=" icon"/>Augur</a>
 					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/bitcoin.png" alt=" icon"/>Bitcoin</a>
@@ -266,7 +259,7 @@ class Template extends Component {
 					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/neo.png" alt=" icon"/>NEO</a>
 					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/ripple.png" alt=" icon"/>Ripple</a>
 					<a href="#"><img src="https://ethereumprice.org/wp-content/themes/ethereumprice/assets/images/icons/coins/taas.png" alt=" icon"/>Taas</a>
-				</div>
+				</div> */}
             </div>
           </div>
         </nav>
@@ -342,30 +335,29 @@ class Template extends Component {
             </div>
           </div>
         </div>
-
         <div className="container pt-5">
           <div className="row">
-            <div className="col-md-3 col-sm-6 col-6" style = {{ fontFamily: " montserrat,sans-serif"}}>
-              <h1 className=" p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black", fontFamily: " montserrat,sans-serif"}}>
+            <div className="col-md-3 col-sm-6 col-6 " >
+              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
+              <a className=" p-0" style={{textAlign:"center",fontWeight:"normal", color: "black", fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR CHANGE
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
-              <h1 className=" p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black" ,fontFamily: " montserrat,sans-serif"}}>
+              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
+              <a className=" p-0" style={{textAlign:"center",fontWeight:"normal", color: "black" ,fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR HIGH
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
-              <h1 className=" p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black", fontFamily: " montserrat,sans-serif" }}>
+              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
+              <a className=" p-0" style={{textAlign:"center",fontWeight:"normal", color: "black", fontFamily: " montserrat,sans-serif" }}>
                 24 HOUR LOW
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
-              <h1 className=" p-0">$256.13%</h1>
-              <a className=" p-0" style={{ color: "black",fontFamily: " montserrat,sans-serif" }}>
+              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
+              <a className=" p-0" style={{ textAlign:"center",fontWeight:"normal", color: "black",fontFamily: " montserrat,sans-serif" }}>
                 MARKET CAP
               </a>
             </div>
@@ -394,20 +386,20 @@ class Template extends Component {
           </p>
         </div>
         {/**Cards */}
-        <div className="my-5">
-          <Cards />
-        </div>
+        {/* <div className="my-5"> */}
+          {/* <Cards /> */}
+        {/* </div> */}
         {/**tables */}
-        <div className=" pb-5">
-          <Table />
-        </div>
+        {/* <div className=" pb-5"> */}
+          {/* <Table /> */}
+        {/* </div> */}
 
         {/**Blog */}
         <div className="container">
           <Blog />
         </div>
 
-        <Hcards />
+        {/* <Hcards /> */}
 
         <div className="container">
           <div className="row">

@@ -9,7 +9,7 @@ import {
     AUTH_ERROR,
     LOGOUT_SUCCESS
   } from "./types";
-  import { returnErrors } from './errorActions'
+  import { returnErrors } from './errorActions';
 
   //RegisterUser
 
@@ -71,21 +71,19 @@ import {
   export const loaduser = () => (dispatch, getState) => {
       //user loading
       dispatch({ type: USER_LOADING })
-      
      
       axios.get('user', tokenConfig(getState))
       .then(res => dispatch({
           type: USER_LOADED,
           payload:res.data
-      }))
-      .catch(err => {
-          dispatch(returnErrors(err.response.data, err.response.status))
-          dispatch({
-              type: AUTH_ERROR
-          })
-      })
+        }))
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status))
+            dispatch({
+                type: AUTH_ERROR
+            })
+        })
   }
-
   //Setup config/headers & token
 
   export const tokenConfig = getState => {

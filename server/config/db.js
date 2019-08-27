@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
- mongoose.connect('mongodb://localhost:27017/ethereum', {
+ mongoose.connect('mmongodb://wajid:wajid1234@ds211168.mlab.com:11168/etheumprice', {
     useNewUrlParser: true,
     useCreateIndex: true
 })
