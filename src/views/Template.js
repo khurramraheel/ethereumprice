@@ -316,11 +316,11 @@ class Template extends Component {
             <div className="mx-auto">
               <h1
                 className=" p-0"
-                style={{ fontSize: 80, fontWeight: 700, letterSpacing: -4 ,fontFamily: " montserrat,sans-serif"}}
+                style={{ fontSize: 80, fontWeight: 700, letterSpacing: -4 ,fontFamily: " montserrat,sans-serif",color:"white"}}
               >
                 ${this.state.valuetoshow}
               </h1>
-              <h1
+              <h3
                 className=" p-0"
                 style={{
                   textAlign: "center",
@@ -331,7 +331,7 @@ class Template extends Component {
                 }}
               >
                 {this.state.perc}%
-              </h1>
+              </h3>
             </div>
           </div>
         </div>
@@ -339,25 +339,25 @@ class Template extends Component {
           <div className="row">
             <div className="col-md-3 col-sm-6 col-6 " >
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className=" p-0" style={{textAlign:"center",fontWeight:"normal", color: "black", fontFamily: " montserrat,sans-serif"}}>
+              <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR CHANGE
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className=" p-0" style={{textAlign:"center",fontWeight:"normal", color: "black" ,fontFamily: " montserrat,sans-serif"}}>
+              <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR HIGH
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className=" p-0" style={{textAlign:"center",fontWeight:"normal", color: "black", fontFamily: " montserrat,sans-serif" }}>
+              <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif" }}>
                 24 HOUR LOW
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col-6">
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className=" p-0" style={{ textAlign:"center",fontWeight:"normal", color: "black",fontFamily: " montserrat,sans-serif" }}>
+              <a className="textcolor p-0" style={{ textAlign:"center",fontWeight:"normal",fontFamily: " montserrat,sans-serif" }}>
                 MARKET CAP
               </a>
             </div>
@@ -367,7 +367,7 @@ class Template extends Component {
         <div className="container pt-5 my-5">
           <ChartWithZoom id={this.state.value} />
         </div>
-        <div className="container">
+        {/* <div className="container">
           <p className="text-black text-center">
             Ethereum Price Chart - US Dollar (USD)
           </p>
@@ -384,7 +384,7 @@ class Template extends Component {
             The price of Ethereum (ETH/USD) today is $295.24 USD with a total
             market cap of $31,506,077,206.
           </p>
-        </div>
+        </div> */}
         {/**Cards */}
         {/* <div className="my-5"> */}
           {/* <Cards /> */}

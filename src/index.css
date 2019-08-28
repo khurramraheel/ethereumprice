@@ -6,7 +6,10 @@ html,body{
   /* background-color: #fff !important; */
   background-color: #0D101B !important;
 }
-h2{
+.textcolor{
+  color: #868686 !important;
+}
+h1,h2{
   color:white !important;
 }
 img {
