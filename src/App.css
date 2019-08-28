@@ -2,6 +2,12 @@
 p,h1,h4,h6,small, td{
   font-family: "monteserrat",sans-serif
 }
+@media (max-width:575px){
+  .my-margin{
+    margin:auto 0px auto 0px auto !important;
+    
+  }
+}
 
 /*sidebar collapse start*/
 .sidepanel  {

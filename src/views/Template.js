@@ -138,7 +138,7 @@ class Template extends Component {
           className="navbar navbar-expand-sm fixed-top navbar-da"
           style={{ backgroundColor: "#555" }}
         >
-          <div className="container">
+          <div className="container my-margin">
             <h4>
               <Link
                 to="/"
@@ -337,26 +337,26 @@ class Template extends Component {
         </div>
         <div className="container pt-5">
           <div className="row">
-            <div className="col-md-3 col-sm-6 col-6 " >
+            <div className="col-md-3 col-sm-6 col text-center" >
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
               <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR CHANGE
               </a>
             </div>
-            <div className="col-md-3 col-sm-6 col-6">
+            <div className="col-md-3 col-sm-6 col text-center">
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
               <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif"}}>
                 24 HOUR HIGH
               </a>
             </div>
-            <div className="col-md-3 col-sm-6 col-6">
+            <div className="col-md-3 col-sm-6 col text-center">
               <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
               <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif" }}>
                 24 HOUR LOW
               </a>
             </div>
-            <div className="col-md-3 col-sm-6 col-6">
-              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
+            <div className="col-md-3 col-sm-6 col text-center">
+              <h1 className=" p-0 m-auto" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
               <a className="textcolor p-0" style={{ textAlign:"center",fontWeight:"normal",fontFamily: " montserrat,sans-serif" }}>
                 MARKET CAP
               </a>
