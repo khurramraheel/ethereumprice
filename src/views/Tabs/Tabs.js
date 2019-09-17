@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Profile from './Profile/profile'
+import Profile from './Profile/Profile'
 import Transaction from './Transactions/Transaction'
 
 export default class Tabs extends Component {
