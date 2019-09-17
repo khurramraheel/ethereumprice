@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Profile from './profile/profile'
+
 
 export default class Tabs extends Component {
     render() {
