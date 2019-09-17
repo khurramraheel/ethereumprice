@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
+import Profile from './Profile/profile'
 import Transaction from './Transactions/Transaction'
-import Profile from './Profile/Profile'
-
 
 export default class Tabs extends Component {
     render() {
