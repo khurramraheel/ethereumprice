@@ -436,7 +436,7 @@ class Template extends Component {
         <div className="container pt-5 my-5">
           <ChartWithZoom id={this.state.value} />
         </div>
-        <div className="container bg-danger">
+        <div className="container text-white">
           <Tabs/>
         </div>
         {/* <div className="container">
