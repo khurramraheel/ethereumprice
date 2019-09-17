@@ -57,7 +57,7 @@ blogs.get("/getBlogs",(req,res)=>{
     .catch(err=>console.log(err));
 })
 blogs.post("/blogDetail",(req,res)=>{
-    console.log(req.body);
+    console.log("Usama",req.body);
     if(req.body.url)
     {
     axios(req.body.url)
