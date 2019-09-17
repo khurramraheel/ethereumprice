@@ -39,7 +39,7 @@ class Template extends Component {
   };
   componentDidMount() {
     // this.props.loaduser()
-    
+
     this.myinterval();
   }
   myinterval = () => {
@@ -72,11 +72,11 @@ class Template extends Component {
   };
   openNav() {
     document.getElementById("mySidepanel").style.width = "300px";
-    }
-    
-    closeNav() {
+  }
+
+  closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
-    }
+  }
   render() {
     const { isAuthenticated, user } = this.props.auth;
     // let gvalue = this.state.value;
@@ -112,14 +112,14 @@ class Template extends Component {
       <Fragment>
         <li className="pl-2 btn-group" role="group" aria-label="Basic example">
           {/* <Link to="/register"> */}
-            <RegisterModal />
+          <RegisterModal />
           {/* </Link> */}
           {/* <LoginModal /> */}
-        
+
           {/* <Link to="/login"> */}
-            <LoginModal />
+          <LoginModal />
           {/* </Link> */}
-        
+
         </li>
       </Fragment>
     );
@@ -270,14 +270,21 @@ class Template extends Component {
                 <li className="nav-item dropdown d-inline-block">
                   <button
                     className="btn btn-outline-dark text-white dropdown-toggle"
-                    style={{ fontSize: "12px", backgroundColor:'#343A40', fontFamily: " montserrat,sans-serif" }}
+                    style={{
+                      fontSize: "12px",
+                      backgroundColor: "#343A40",
+                      fontFamily: " montserrat,sans-serif"
+                    }}
                     data-toggle="dropdown"
                   >
                     ETH/AUD
                   </button>
                   <div
                     className="dropdown-menu bg-dark text-white"
-                    style={{ fontSize: "12px", fontFamily: " montserrat,sans-serif"}}
+                    style={{
+                      fontSize: "12px",
+                      fontFamily: " montserrat,sans-serif"
+                    }}
                   >
                     <a className="dropdown-item">ETH/BTC</a>
                     <a className="dropdown-item">ETH/BTC</a>
@@ -292,20 +299,27 @@ class Template extends Component {
                 <li className="nav-item dropdown pl-2 d-inline-block">
                   <button
                     className="btn btn-outline-dark text-white dropdown-toggle"
-                    style={{ fontSize: "12px",backgroundColor:'#343A40', fontFamily: " montserrat,sans-serif" }}
+                    style={{
+                      fontSize: "12px",
+                      backgroundColor: "#343A40",
+                      fontFamily: " montserrat,sans-serif"
+                    }}
                     data-toggle="dropdown"
                   >
                     Market Avg.
                   </button>
                   <div
                     className="dropdown-menu bg-dark text-white"
-                    style={{ fontSize: "12px", fontFamily: " montserrat,sans-serif" }}
+                    style={{
+                      fontSize: "12px",
+                      fontFamily: " montserrat,sans-serif"
+                    }}
                   >
                     <a className="dropdown-item">Market Avg.</a>
                   </div>
                 </li>
                 <li className="d-inline-block">
-                {isAuthenticated ? authLinks : guestLinks}
+                  {isAuthenticated ? authLinks : guestLinks}
                 </li>
               </ul>
             </div>
@@ -316,7 +330,13 @@ class Template extends Component {
             <div className="mx-auto">
               <h1
                 className=" p-0"
-                style={{ fontSize: 80, fontWeight: 700, letterSpacing: -4 ,fontFamily: " montserrat,sans-serif",color:"white"}}
+                style={{
+                  fontSize: 80,
+                  fontWeight: 700,
+                  letterSpacing: -4,
+                  fontFamily: " montserrat,sans-serif",
+                  color: "white"
+                }}
               >
                 ${this.state.valuetoshow}
               </h1>
@@ -337,27 +357,75 @@ class Template extends Component {
         </div>
         <div className="container pt-5">
           <div className="row">
-            <div className="col-md-3 col-sm-6 col text-center" >
-              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif"}}>
+            <div className="col-md-3 col-sm-6 col text-center">
+              <h1
+                className=" p-0"
+                style={{ fontSize: "3.2rem", fontWeight: 700 }}
+              >
+                $256.13%
+              </h1>
+              <a
+                className="textcolor p-0"
+                style={{
+                  textAlign: "center",
+                  fontWeight: "normal",
+                  fontFamily: " montserrat,sans-serif"
+                }}
+              >
                 24 HOUR CHANGE
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col text-center">
-              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif"}}>
+              <h1
+                className=" p-0"
+                style={{ fontSize: "3.2rem", fontWeight: 700 }}
+              >
+                $256.13%
+              </h1>
+              <a
+                className="textcolor p-0"
+                style={{
+                  textAlign: "center",
+                  fontWeight: "normal",
+                  fontFamily: " montserrat,sans-serif"
+                }}
+              >
                 24 HOUR HIGH
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col text-center">
-              <h1 className=" p-0" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className="textcolor p-0" style={{textAlign:"center",fontWeight:"normal", fontFamily: " montserrat,sans-serif" }}>
+              <h1
+                className=" p-0"
+                style={{ fontSize: "3.2rem", fontWeight: 700 }}
+              >
+                $256.13%
+              </h1>
+              <a
+                className="textcolor p-0"
+                style={{
+                  textAlign: "center",
+                  fontWeight: "normal",
+                  fontFamily: " montserrat,sans-serif"
+                }}
+              >
                 24 HOUR LOW
               </a>
             </div>
             <div className="col-md-3 col-sm-6 col text-center">
-              <h1 className=" p-0 m-auto" style={{fontSize: "3.2rem", fontWeight: 700,}}>$256.13%</h1>
-              <a className="textcolor p-0" style={{ textAlign:"center",fontWeight:"normal",fontFamily: " montserrat,sans-serif" }}>
+              <h1
+                className=" p-0 m-auto"
+                style={{ fontSize: "3.2rem", fontWeight: 700 }}
+              >
+                $256.13%
+              </h1>
+              <a
+                className="textcolor p-0"
+                style={{
+                  textAlign: "center",
+                  fontWeight: "normal",
+                  fontFamily: " montserrat,sans-serif"
+                }}
+              >
                 MARKET CAP
               </a>
             </div>
@@ -366,6 +434,9 @@ class Template extends Component {
 
         <div className="container pt-5 my-5">
           <ChartWithZoom id={this.state.value} />
+        </div>
+        <div className="container bg-danger">
+          
         </div>
         {/* <div className="container">
           <p className="text-black text-center">
@@ -387,11 +458,11 @@ class Template extends Component {
         </div> */}
         {/**Cards */}
         {/* <div className="my-5"> */}
-          {/* <Cards /> */}
+        {/* <Cards /> */}
         {/* </div> */}
         {/**tables */}
         {/* <div className=" pb-5"> */}
-          {/* <Table /> */}
+        {/* <Table /> */}
         {/* </div> */}
 
         {/**Blog */}
@@ -411,13 +482,14 @@ class Template extends Component {
           </div>
         </div>
 
-        <div
-          className="container-fluid"
-          style={{ background: "grey" }}
-        >
+        <div className="container-fluid" style={{ background: "grey" }}>
           <div className="py-5 text-center text-white">
-            <h4 style = {{ fontFamily: "monteserrat,sans-serif"}}>Subscribe to EthereumPrice.org</h4>
-            <h6 style = {{ fontFamily: "monteserrat,sans-serif"}}>Receive email updates when new content is published</h6>
+            <h4 style={{ fontFamily: "monteserrat,sans-serif" }}>
+              Subscribe to EthereumPrice.org
+            </h4>
+            <h6 style={{ fontFamily: "monteserrat,sans-serif" }}>
+              Receive email updates when new content is published
+            </h6>
             <form
               className="mx-auto py-4 border-0 text-white"
               style={{ maxWidth: "445px" }}
@@ -444,7 +516,7 @@ class Template extends Component {
         </div>
 
         {/**Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

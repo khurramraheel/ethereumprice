@@ -86,7 +86,7 @@ class LoginModal extends Component {
     });
   };
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const { username, email, password, password_confirm} = this.state
     return (
       <div>
