@@ -4,7 +4,7 @@ export default class Transaction extends Component {
     render() {
         return (
             <div>
-                <table class="table">
+                <table class="table text-white">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
