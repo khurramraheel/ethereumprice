@@ -19,6 +19,7 @@ import { noConflict } from "q";
 import PropTypes from "prop-types";
 import LoginModal from './LoginRegistration/loginModal/LoginModal'
 import RegisterModal from './LoginRegistration/registerModal/RegisterModal'
+import Tabs from './Tabs/Tabs'
 // import ChartWithZoom from "./overview/Chart with Zoom";
 class Template extends Component {
   constructor(props) {
@@ -436,7 +437,7 @@ class Template extends Component {
           <ChartWithZoom id={this.state.value} />
         </div>
         <div className="container bg-danger">
-          
+          <Tabs/>
         </div>
         {/* <div className="container">
           <p className="text-black text-center">
