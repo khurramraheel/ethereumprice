@@ -7,11 +7,26 @@ class Trade extends Component {
         this.state={
             oder_digit:""
         }
+    }   
+    chageHandler = ()=>{
+        this.check();
     }
-    chageHandler = (e)=>{
-        var name = e.target.name;
-        var value = e.target.value;
-        console.log(name,value)
+    check = ()=>{
+            var buy2_etherum = document.getElementById('buy_etherum').value;
+            console.log(buy2_etherum);
+            var etherum = document.getElementById('etherumprice').value;
+            console.log(etherum);
+            var c_balance = document.getElementById('currentbalance').value;
+            console.log(c_balance);
+            var checkamount = buy2_etherum * etherum;
+            console.log(checkamount);
+            if(checkamount<c_balance)
+            {
+                console.log("You can buy Etherum")
+            }
+            else{
+                console.log("Your current balance have not enough")
+            }
     }
   render() {
     
@@ -27,9 +42,10 @@ class Trade extends Component {
                         </div>
                         <input  type="text" 
                             disabled
+                            id="currentbalance"
                             className="form-control p-4 text-white border-0"
                             aria-label="Sizing example input" 
-                            value="100"
+                            value="25000"
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
                     </div>
@@ -39,6 +55,7 @@ class Trade extends Component {
                         </div>
                         <input  type="text" 
                             disabled
+                            id="etherumprice"
                             className="form-control p-4 text-white border-0"
                             value="254"
                             aria-label="Sizing example input" 
@@ -51,7 +68,9 @@ class Trade extends Component {
                         </div>
                         <input  type="text" 
                             className="form-control p-4 text-white border-0"
+                            id="buy_etherum"
                             aria-label="Sizing example input" 
+                            onChange={this.chageHandler}
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
                     </div> 
@@ -59,6 +78,7 @@ class Trade extends Component {
                 <div class="card-footer text-muted">
                    
                         <button
+                        disabled
                             className="input-grouptext btn btn-dark px-5 border-0"
                             style={{ backgrund: "", color: "white", fontWeight: "600",textAlign:'right' }}
                         >
