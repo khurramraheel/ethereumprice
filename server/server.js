@@ -20,4 +20,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(userRoutes);
 app.use(blogRoutes);
+
+app.post('/trade',(req,res) => {
+    console.log(req.body)
+    res.json({
+        success:true
+    })
+})
 app.listen(port, () => console.log(`App listening on port ${port}`));
+
+
