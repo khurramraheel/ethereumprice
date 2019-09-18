@@ -11,27 +11,27 @@ class Trade extends Component {
             eth_price:""
         }
     }   
-    chageHandler = ()=>{
-        this.check();
-    }
-    check = ()=>{
-            var buy2_etherum = document.getElementById('buy_etherum').value;
-            console.log(buy2_etherum);
-            var etherum = document.getElementById('etherumprice').value;
-            console.log(etherum);
-            var c_balance = document.getElementById('currentbalance').value;
-            console.log(c_balance);
-            var checkamount = buy2_etherum * etherum;
-            console.log(checkamount);
-            if(checkamount<c_balance)
-            {
-                console.log("You can buy Etherum")
-            }
-            else{
-                console.log("Your current balance have not enough")
-            }
+    // chageHandler = ()=>{
+    //     this.check();
+    // }
+    // check = ()=>{
+    //         var buy2_etherum = document.getElementById('buy_etherum').value;
+    //         console.log(buy2_etherum);
+    //         var etherum = document.getElementById('etherumprice').value;
+    //         console.log(etherum);
+    //         var c_balance = document.getElementById('currentbalance').value;
+    //         console.log(c_balance);
+    //         var checkamount = buy2_etherum * etherum;
+    //         console.log(checkamount);
+    //         if(checkamount<c_balance)
+    //         {
+    //             console.log("You can buy Etherum")
+    //         }
+    //         else{
+    //             console.log("Your current balance have not enough")
+    //         }
         
-    }
+    // }
     componentDidMount(){
         this.setState({
             eth_price: this.refs.eth_price.value,
@@ -40,26 +40,7 @@ class Trade extends Component {
     }
 
 
-	chageHandler = ()=>{
-        this.check();
-    }
-     check = ()=>{
-            var buy2_etherum = document.getElementById('buy_etherum').value;
-            console.log(buy2_etherum);
-            var etherum = document.getElementById('etherumprice').value;
-            console.log(etherum);
-            var c_balance = document.getElementById('currentbalance').value;
-            console.log(c_balance);
-            var checkamount = buy2_etherum * etherum;
-            console.log(checkamount);
-            if(checkamount<c_balance)
-            {
-                console.log("You can buy Etherum")
-            }
-            else{
-                console.log("Your current balance have not enough")
-            }
-    }
+	
     // state = {
     //     c_balance: this.refs.c_balance.value
     // } 
