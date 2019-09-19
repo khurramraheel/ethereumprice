@@ -8,8 +8,10 @@ class Trade extends Component {
         super(props);
         this.state={
             oder_digit:"",
-            eth_price:""
+            eth_price:"",
+            checkAmount: null
         }
+        
     }   
     // chageHandler = ()=>{
     //     this.check();
@@ -33,10 +35,13 @@ class Trade extends Component {
         
     // }
     componentDidMount(){
+            this.refs.subAmount.disabled = true
         this.setState({
             eth_price: this.refs.eth_price.value,
             c_balance: this.refs.c_balance.value,
+            result: ""
         })
+        
     }
 
 
@@ -48,26 +53,59 @@ class Trade extends Component {
 
     chageHandler = (e)=>{
         var name = e.target.name;
-        var total_value = e.target.value;
-        const config = {
-            headers:{
-                "Content-Type": "application/json"
-            }
-        }
+        var input_value = e.target.value;
+        if(input_value){
+           
         let {eth_price,c_balance} = this.state
-        const body = JSON.stringify({
-            eth_price, c_balance
-        })
-        axios.post('/trade',body,config)
-        .then(res => {
-            return res
-        }).then(res => {
-            if(res.data.success){
-                console.log("sucess")
-            }
-        })
-        .catch(err => console.log(err))
-        // console.log(this.state.c_balance)
+        let checkAmount = eth_price * input_value
+        this.setState({checkAmount:checkAmount})
+        if (checkAmount < c_balance)
+                {
+                    this.setState({result:"You can buy Etherum",textClass:"text-success"});
+                    this.refs.subAmount.disabled = false 
+                }
+                else{
+                   this.setState(
+                       {result:"Your current balance have not enough",textClass:"text-danger"}
+                       );
+                    this.refs.subAmount.disabled = true
+                }
+        // console.log(checkAmount);
+        
+        }
+        else{
+            this.setState({result:"",textClass:"",checkAmount:null})
+            this.refs.subAmount.disabled = true
+
+        }
+    }
+    buyEthereum = () => {
+         const config = {
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }
+        let {
+            eth_price,
+            c_balance,
+            checkAmount
+        } = this.state
+
+         const body = JSON.stringify({
+             eth_price,
+             c_balance,
+             checkAmount
+         })
+         axios.post('/trade', body, config)
+             .then(res => {
+                 return res
+             }).then(res => {
+                 if (res.data.success) {
+                     console.log("sucess")
+                 }
+             })
+             .catch(err => console.log(err))
+        //  console.log(this.state.c_balance)
     }
   render() {
     return (
@@ -107,7 +145,7 @@ class Trade extends Component {
                         <div class="input-group-prepend">
                             <span class="input-group-text w-6" id="inputGroup-sizing-default">Buy Ethereum</span>
                         </div>
-                        < input type = "text"
+                        < input type = "number"
                         onChange = {
                             this.chageHandler
                         }
@@ -118,15 +156,26 @@ class Trade extends Component {
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
                     </div> 
+                   
+                    <p className={this.state.textClass ? this.state.textClass : ""} >
+                        {this.state.result} 
+                    </p>
+                    <p className={this.state.textClass ? this.state.textClass : ""} >
+                        {
+                            this.state.checkAmount ? "Total Ethereum " +  this.state.checkAmount: null
+                        }
+                    </p>
                 </div>
                 <div class="card-footer text-muted">
                    
-                        <button
-                        disabled
-                            className="input-grouptext btn btn-dark px-5 border-0"
-                            style={{ backgrund: "", color: "white", fontWeight: "600",textAlign:'right' }}
+                        <button type="submit" 
+                        onClick={this.buyEthereum}
+                        ref="subAmount"
+                        
+                        className="input-grouptext btn btn-dark px-5 border-0"
+                        style={{ backgrund: "", color: "white", fontWeight: "600",textAlign:'right' }}
                         >
-                        SUBMIT
+                            SUBMIT
                         </button>
                    
                 </div> 
