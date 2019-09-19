@@ -70,9 +70,7 @@ class Trade extends Component {
         // console.log(this.state.c_balance)
     }
   render() {
-    
     return (
-       
         <div>
             <div class="card text-center align-items-center " >
                 
