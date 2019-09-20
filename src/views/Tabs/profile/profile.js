@@ -1,16 +1,42 @@
 import React, { Component } from 'react'
 
-export class profile extends Component {
+export class Profile extends Component {
     render() {
         return (
             <div>
-                <h1>Sheikh Umar</h1>
-                <h2>Email</h2> <p>Xhk.umar5091@gmail.com</p>
-                <p><b>About</b> web developer /UI designer</p>
-                <p><b>hoobies</b> web development</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         )
     }
 }
 
-export default profile
+export default Profile
