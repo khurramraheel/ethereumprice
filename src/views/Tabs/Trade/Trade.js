@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import axios from 'axios'
 import './style.css'
 class Trade extends Component {
@@ -79,7 +80,7 @@ class Trade extends Component {
 
         }
     }
-    buyEthereum = () => {
+    buyEthereum = dispatch => {
          const config = {
              headers: {
                  "Content-Type": "application/json"
@@ -99,11 +100,10 @@ class Trade extends Component {
          axios.post('/trade', body, config)
              .then(res => {
                  return res
-             }).then(res => {
-                 if (res.data.success) {
-                     console.log("sucess")
-                 }
-             })
+             }).then(res => dispatch({
+                 type:"YOU_BUY_ETHEREUM",
+                 payloda:res.data
+             }))
              .catch(err => console.log(err))
         //  console.log(this.state.c_balance)
     }
@@ -185,4 +185,4 @@ class Trade extends Component {
   }
 }
 
-export default Trade
+export default connect()(Trade)

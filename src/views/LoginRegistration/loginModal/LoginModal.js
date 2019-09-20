@@ -58,7 +58,8 @@ class LoginModal extends Component {
 handleLogin = e => {
     e.preventDefault();
     const { email, password } = this.state;
-
+    // email = this.state.email
+  
     const user = {
       email,
       password
