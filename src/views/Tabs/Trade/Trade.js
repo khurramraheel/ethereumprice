@@ -11,7 +11,7 @@ class Trade extends Component {
             oder_digit:"",
             eth_price:"",
             checkAmount: null,
-            // username:""
+            username:""
         }
         
     }   
@@ -43,7 +43,10 @@ class Trade extends Component {
             c_balance: this.refs.c_balance.value,
             result: ""
         })
-        
+         let {
+             username
+         } = this.props.username
+         console.log(this.state)
     }
 
 
@@ -92,7 +95,7 @@ class Trade extends Component {
             c_balance,
             checkAmount,
             // c_date,
-            // username
+            username
         } = this.state
 
          const body = JSON.stringify({
@@ -191,7 +194,7 @@ class Trade extends Component {
 }
  let mapStateToProps = state =>{
     return{
-        // username: state.user.username
+        username: state.auth.user
     }
 }
-export default connect()(Trade)
+export default connect(mapStateToProps)(Trade)
