@@ -28,24 +28,6 @@ app.use(blogRoutes);
 // change
 app.use(tradeing)
 
-// ____________
-
-// app.post('/trade',(req,res) => {
-//     // console.log(req.body)
-//     const { eth_price,c_balance,checkAmount  } = req.body;
-//     const newTrade = new Trade({
-//         eth_price, 
-//         c_balance, 
-//         checkAmount,
-//     })
-//     newTrade.save().then(trade => {
-//         res.json({
-//             success: true,
-//             trade:trade
-//         })
-//     })
-    
-// })
 app.listen(port, () => console.log(`App listening on port ${port}`));
 
 
