@@ -10,6 +10,7 @@ import {
     YOU_BUY_ETHEREUM
   } from "../Actions/types";
   const initialState = {
+    trade_info:null,
         eth_price:'',
         c_balance:'',
         checkAmount:'',
@@ -23,9 +24,11 @@ import {
       case YOU_BUY_ETHEREUM:
       console.log(action.payloda)
         return {
+
           ...state,
-          
+          trade_info:action.payloda
         };
+        
         break;
       
       default:

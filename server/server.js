@@ -28,6 +28,7 @@ app.use(blogRoutes);
 // change
 app.use(tradeing)
 
+
 app.listen(port, () => console.log(`App listening on port ${port}`));
 
 
