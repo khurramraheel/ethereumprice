@@ -13,6 +13,10 @@ const cors = require('cors')
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes=require("./routes/blogRoutes");
 
+//newedit
+const tradeing = require("./routes/traderoute")
+//_______________
+
 var app = express();
 var port = process.env.PORT || 5000;
 app.use(express.json());
@@ -21,23 +25,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(userRoutes);
 app.use(blogRoutes);
+// change
+app.use(tradeing)
 
-app.post('/trade',(req,res) => {
-    // console.log(req.body)
-    const { eth_price,c_balance,checkAmount  } = req.body;
-    const newTrade = new Trade({
-        eth_price, 
-        c_balance, 
-        checkAmount,
-    })
-    newTrade.save().then(trade => {
-        res.json({
-            success: true,
-            trade:trade
-        })
-    })
+// ____________
+
+// app.post('/trade',(req,res) => {
+//     // console.log(req.body)
+//     const { eth_price,c_balance,checkAmount  } = req.body;
+//     const newTrade = new Trade({
+//         eth_price, 
+//         c_balance, 
+//         checkAmount,
+//     })
+//     newTrade.save().then(trade => {
+//         res.json({
+//             success: true,
+//             trade:trade
+//         })
+//     })
     
-})
+// })
 app.listen(port, () => console.log(`App listening on port ${port}`));
 
 
