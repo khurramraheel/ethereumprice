@@ -75,7 +75,8 @@ import {
       axios.get('user', tokenConfig(getState))
       .then(res => dispatch({
           type: USER_LOADED,
-          payload:res.data
+          payload:res.data,
+          
         }))
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status))

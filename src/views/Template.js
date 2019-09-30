@@ -319,7 +319,7 @@ class Template extends Component {
                     <a className="dropdown-item">Market Avg.</a>
                   </div>
                 </li>
-                <li className="d-inline-block">
+                <li className="d-inline-block name-user">
                   {isAuthenticated ? authLinks : guestLinks}
                 </li>
               </ul>
@@ -436,7 +436,7 @@ class Template extends Component {
         <div className="container pt-5 my-5">
           <ChartWithZoom id={this.state.value} />
         </div>
-        <div className="container bg-danger">
+        <div className="container text-white">
           <Tabs/>
         </div>
         {/* <div className="container">
