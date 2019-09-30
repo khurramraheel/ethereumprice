@@ -43,9 +43,9 @@ class Trade extends Component {
             c_balance: this.refs.c_balance.value,
             result: ""
         })
-         let {
-             username
-         } = this.props.username
+        //  let {
+        //      username
+        //  } = this.props.username
          console.log(this.state)
     }
 

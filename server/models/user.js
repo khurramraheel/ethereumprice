@@ -20,5 +20,5 @@ var User = mongoose.model('users', {
   //   required: true
   // },
 });
-
 module.exports = User;
+
