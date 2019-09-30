@@ -30,7 +30,6 @@ app.use(tradeing)
 
 // ____________
 
-<<<<<<< Updated upstream
 // app.post('/trade',(req,res) => {
 //     // console.log(req.body)
 //     const { eth_price,c_balance,checkAmount  } = req.body;
@@ -45,29 +44,6 @@ app.use(tradeing)
 //             trade:trade
 //         })
 //     })
-=======
-// const trade = express.Router()
-// trade.get('/showTrade', (req, resp) => {
-//     Trade.find({}, function (err, user) {
-//         resp.json(user)
-//         console.log(user)
-//     })
-// })
-app.post('/trade',(req,res) => {
-    // console.log(req.body)
-    const { eth_price,c_balance,checkAmount  } = req.body;
-    const newTrade = new Trade({
-        eth_price, 
-        c_balance, 
-        checkAmount,
-    })
-    newTrade.save().then(trade => {
-        res.json({
-            success: true,
-            trade:trade
-        })
-    })
->>>>>>> Stashed changes
     
 // })
 app.listen(port, () => console.log(`App listening on port ${port}`));
