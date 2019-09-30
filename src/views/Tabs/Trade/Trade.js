@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import axios from 'axios'
 import './style.css'
 class Trade extends Component {
@@ -9,7 +10,8 @@ class Trade extends Component {
         this.state={
             oder_digit:"",
             eth_price:"",
-            checkAmount: null
+            checkAmount: null,
+            username:""
         }
         
     }   
@@ -41,7 +43,10 @@ class Trade extends Component {
             c_balance: this.refs.c_balance.value,
             result: ""
         })
-        
+         let {
+             username
+         } = this.props.username
+         console.log(this.state)
     }
 
 
@@ -79,7 +84,7 @@ class Trade extends Component {
 
         }
     }
-    buyEthereum = () => {
+    buyEthereum = dispatch => {
          const config = {
              headers: {
                  "Content-Type": "application/json"
@@ -88,22 +93,25 @@ class Trade extends Component {
         let {
             eth_price,
             c_balance,
-            checkAmount
+            checkAmount,
+            // c_date,
+            username
         } = this.state
 
          const body = JSON.stringify({
              eth_price,
              c_balance,
-             checkAmount
+             checkAmount,
+            //  c_date,
+            //  username
          })
          axios.post('/trade', body, config)
              .then(res => {
                  return res
-             }).then(res => {
-                 if (res.data.success) {
-                     console.log("sucess")
-                 }
-             })
+             }).then(res => dispatch =>({
+                 type:"YOU_BUY_ETHEREUM",
+                 payload:res.data
+             }))
              .catch(err => console.log(err))
         //  console.log(this.state.c_balance)
     }
@@ -184,5 +192,9 @@ class Trade extends Component {
     )
   }
 }
-
-export default Trade
+ let mapStateToProps = state =>{
+    return{
+        username: state.auth.user
+    }
+}
+export default connect(mapStateToProps)(Trade)

@@ -1,11 +1,12 @@
 var express = require("express");
 require("./config/db");
+// require("./config/localDb");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var mongoose = require("mongoose");
 var passport = require("passport");
-var User = require("./models/user");
+var Trade = require("./models/tradeSchema");
 var LocalStrategy = require("passport-local").Strategy;
 const cors = require('cors')
 
@@ -22,10 +23,20 @@ app.use(userRoutes);
 app.use(blogRoutes);
 
 app.post('/trade',(req,res) => {
-    console.log(req.body)
-    res.json({
-        success:true
+    // console.log(req.body)
+    const { eth_price,c_balance,checkAmount  } = req.body;
+    const newTrade = new Trade({
+        eth_price, 
+        c_balance, 
+        checkAmount,
     })
+    newTrade.save().then(trade => {
+        res.json({
+            success: true,
+            trade:trade
+        })
+    })
+    
 })
 app.listen(port, () => console.log(`App listening on port ${port}`));
 

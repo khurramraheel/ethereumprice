@@ -437,7 +437,10 @@ class Template extends Component {
           <ChartWithZoom id={this.state.value} />
         </div>
         <div className="container text-white">
-          <Tabs/>
+          {
+            // isAuthenticated ? <Tabs/> : null
+          }
+          < Tabs/>
         </div>
         {/* <div className="container">
           <p className="text-black text-center">
