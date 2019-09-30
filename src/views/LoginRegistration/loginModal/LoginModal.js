@@ -6,13 +6,13 @@ import { clearErrors } from '../../../Redux/Actions/errorActions'
 import {
   Button,
   Modal,
-  ModalHeader,
+  // ModalHeader,
   ModalBody,
-  ModalFooter,
-  Form,
-  FormGroup,
-  Label,
-  Input,
+  // ModalFooter,
+  // Form,
+  // FormGroup,
+  // Label,
+  // Input,
   Alert
 } from "reactstrap";
 import './style.css';

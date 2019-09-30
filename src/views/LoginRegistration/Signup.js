@@ -70,7 +70,7 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="container">
         { this.state.msg ? <div class="alert alert-danger" role="alert">

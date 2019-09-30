@@ -12,6 +12,7 @@ export const GET_ERRORS = 'GET_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+export const YOU_BUY_ETHEREUM = 'YOU_BUY_ETHEREUM'
 
 
 

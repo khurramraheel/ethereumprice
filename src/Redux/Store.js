@@ -3,7 +3,7 @@ import rootReducer from "./Reducers/rootReducer";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 
-const initialState = {};
+// const initialState = {};
 const middleware = [thunk];
 
 const store = createStore(
