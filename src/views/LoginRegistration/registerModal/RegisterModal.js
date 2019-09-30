@@ -6,18 +6,18 @@ import PropTypes from "prop-types";
 import {
   Button,
   Modal,
-  ModalHeader,
+  // ModalHeader,
   ModalBody,
-  ModalFooter,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
+  // ModalFooter,
+  // Form,
+  // FormGroup,
+  // Label,
+  // Input,
+  // FormText,
   Alert
 } from "reactstrap";
 import "./style.css";
-import avatar from "./images/hr.png";
+// import avatar from "./images/hr.png";
 
 class LoginModal extends Component {
   state = {
@@ -37,17 +37,24 @@ class LoginModal extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
+    fetch('/getBlogs', {
+      method:'GET',
+    }).then((res)=>{
+return res.json();
+    }).then((res)=>{
+      // console.log(res)
+    })
+    // const { error } = this.props;
 
-    if (error !== prevProps.error) {
-      //check for register error
-      if (error.id === "REGISTER_FAIL") {
-        this.setState({ msg: error.msg.msg });
-      }
-      else {
-        this.setState({ msg: null });
-      }
-    }
+    // if (error !== prevProps.error) {
+    //   //check for register error
+    //   if (error.id === "REGISTER_FAIL") {
+    //     this.setState({ msg: error.msg.msg });
+    //   }
+    //   else {
+    //     this.setState({ msg: null });
+    //   }
+    // }
   }
 
   handleChange = evt => {

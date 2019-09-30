@@ -17,7 +17,11 @@ class Trade extends Component {
             checkAmount: null,
            
         }
+<<<<<<< Updated upstream
        
+=======
+        // student1 = new Student()
+>>>>>>> Stashed changes
     }   
     date=()=>{
         let Fulldate = new Date();//Wed Sep 25 2019 11:08:03 GMT+0500 (Pakistan Standard Time)
@@ -60,6 +64,7 @@ class Trade extends Component {
             //eth_quantity:this.refs.eth_quantity.value,
             result: ""
         })
+<<<<<<< Updated upstream
        
         // axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD&e=Coinbase&extraParams=your_app_name')
         // .then(res =>{
@@ -67,6 +72,19 @@ class Trade extends Component {
         //     console.log(cryptos.USD);
         //     this.setState({cryptosrate:cryptos.USD})
         // })
+=======
+        //  let {
+        //      username
+        //  } = this.props.username
+        //  console.log(this.state)
+    }
+
+
+	
+    // state = {
+    //     c_balance: this.refs.c_balance.value
+    // } 
+>>>>>>> Stashed changes
         
     }
     
@@ -114,11 +132,44 @@ class Trade extends Component {
 
         }
     }
+<<<<<<< Updated upstream
     buyEthereum = ()=>{
         this.state.userID = this.props.authdata.user._id
         let usertrade= this.state
         this.props.tradeing(usertrade)
         console.log(usertrade)
+=======
+    buyEthereum = dispatch => {
+         const config = {
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }
+        let {
+            eth_price,
+            c_balance,
+            checkAmount,
+            // c_date,
+            // username
+        } = this.state
+
+         const body = JSON.stringify({
+             eth_price,
+             c_balance,
+             checkAmount,
+            //  c_date,
+            //  username
+         })
+         axios.post('/trade', body, config)
+             .then(res => {
+                 return res
+             }).then(res => dispatch =>({
+                 type:"YOU_BUY_ETHEREUM",
+                 payload:res.data
+             }))
+             .catch(err => console.log(err))
+        //  console.log(this.state.c_balance)
+>>>>>>> Stashed changes
     }
     // buyEthereum = dispatch => {
         

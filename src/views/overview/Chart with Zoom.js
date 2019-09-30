@@ -17,7 +17,7 @@ class ChartWithZoom extends Component {
 		})
 	}
 	componentDidUpdate(prevprops){
-		if(prevprops.id!=this.props.id)
+		if(prevprops.id !== this.props.id)
 		{
 			var value=this.generateDataPoints(this.props.id)
 			this.setState({

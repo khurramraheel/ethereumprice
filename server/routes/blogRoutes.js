@@ -17,7 +17,7 @@ var obj={
     article:null,
     articleImage:null
 };
-blogs.get("/getBlogs",(req,res)=>{
+blogs.get("/getBlogs", (req, res) => {
     axios(url)
     .then(responce=>{
         const html=responce.data;
@@ -50,14 +50,14 @@ blogs.get("/getBlogs",(req,res)=>{
             };
         //    console.log(obj)
         })
-        console.log(data)
+        // console.log(data)
         res.json({success:true,data:data});
        
     })
     .catch(err=>console.log(err));
 })
 blogs.post("/blogDetail",(req,res)=>{
-    console.log("Usama",req.body);
+    // console.log("Usama",req.body);
     if(req.body.url)
     {
     axios(req.body.url)
@@ -76,7 +76,7 @@ blogs.post("/blogDetail",(req,res)=>{
     //     })
     //     article=$(article).html()
     //     console.log(article)
-        console.log(true);
+        // console.log(true);
         res.json({success:true,article});
     })
     .catch(err=>console.log(err))

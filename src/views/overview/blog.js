@@ -10,7 +10,9 @@ class Blog extends Component {
   }
   render() {
     const { blogs } = this.props;
+    // console.log("redux state",this.props.blogs);
     // alert(blogs.length)
+      // console.log(blogs)
     return (
       <div className="article-list">
         <h2 className="article-list__title">Ethereum Price Updates</h2>
@@ -21,7 +23,7 @@ class Blog extends Component {
               const { image, name, date } = blog.author;
               const { article, articleImage } = blog;
               return (
-                <article className="article-card" id="post-123">
+                <article className="article-card" id="post-123" key={title}>
                   <div className="article-card__article">
                     <div className="article-card__body">
 
@@ -35,7 +37,7 @@ class Blog extends Component {
                           {name} </div>
                         <div className="meta-posted">
                           <span className="mega-hero__label">Published</span>
-                          <span className="meta__posted-on"><Link to={link} rel="bookmark"><time className="entry-date published updated" datetime="2019-08-19T18:31:39+01:00">
+              <span className="meta__posted-on"><Link to={link} rel="bookmark"><time className="entry-date published updated" >{/*datetime="2019-08-19T18:31:39+01:00"*/ }
                             <br />{date}</time></Link></span> </div>
 
                       </div>
@@ -46,7 +48,7 @@ class Blog extends Component {
                       </div>
                     </div>
                     <div className="article-card__image">
-                      <img src={articleImage} alt="Featured Image: Bizarre Bitcoin Conf, ETH Tops Developer Rankings &amp; Binance To Lauch Libra Competitor" />
+                      <img src={articleImage} alt="Featured IMG: Bizarre Bitcoin Conf, ETH Tops Developer Rankings &amp; Binance To Lauch Libra Competitor" />
                     </div>
                   </div>
                 </article>
