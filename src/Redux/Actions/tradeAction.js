@@ -17,7 +17,7 @@ import {getTradeData} from "../../views/Tabs/Transactions/Transaction"
              }).then(res => dispatch({
                 
                  type:"YOU_BUY_ETHEREUM",
-                 payloda:res.data.trade
+                 payload:res.data.trade
              }))
              .catch(err => console.log(err))
         //  console.log(this.state.c_balance)

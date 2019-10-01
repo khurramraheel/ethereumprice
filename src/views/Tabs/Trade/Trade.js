@@ -17,6 +17,7 @@ class Trade extends Component {
             checkAmount: null,
              username:"",
              eth_quantity:"",
+             alertResult:false
            
         }
        
@@ -117,19 +118,29 @@ class Trade extends Component {
 
         }
     }
+    
 buyEthereum = ()=>{
         this.state.userID = this.props.authdata.user._id
         let usertrade= this.state
         this.props.tradeing(usertrade)
-        console.log(usertrade)
+        this.setState({alertResult:true})
+        setInterval(()=>{
+            this.setState({alertResult:false})
+        },3000)
+        console.log(usertrade);
+        this.setState({result:"",textClass:"",checkAmount:null})
+        document.getElementById('buy_etherum').value='';
+        
+        //this.refs.subAmount.disabled=false;
     }
   render() {
     
-    //console.log(ETH_in_usd)
-    console.log(this.state)
+    
+   // console.log(this.state)
 
     const { isAuthenticated, user } = this.props.authdata;
      console.log('check user', user)
+     //console.log(this.props.tradeData)
     return (
         <div>
             <div class="card text-center align-items-center " >
@@ -190,6 +201,11 @@ buyEthereum = ()=>{
                             this.state.checkAmount ? "Total Ethereum " +  this.state.checkAmount: null
                         }
                     </p>
+                    <p className={this.state.textClass ? this.state.textClass : ""} >
+                        {
+                            this.state.alertResult ? <div className='alert alert-success'>trading Successfully Done</div>  : null
+                        }
+                    </p>
                 </div>
                 <div class="card-footer text-muted">
                    
@@ -210,6 +226,7 @@ buyEthereum = ()=>{
   }
 }
 const mapStateToProps = state => ({
-    authdata: state.auth
+    authdata: state.auth,
+    // tradeData: state.trade
   });
 export default connect(mapStateToProps,{tradeing})(Trade)
