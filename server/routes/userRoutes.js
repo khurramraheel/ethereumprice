@@ -1,16 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/user");
+// const Trade = require("../models/trademodels");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require('./middleware/auth');
 
-router.get('/showTrade', (req, resp) => {
-  User.find({}, function (err, users) {
-    resp.json({users})
-     console.log(users)
-
-  })
-})
 
 router.post("/register", (req, res) => {
   const { username, email, password } = req.body;
