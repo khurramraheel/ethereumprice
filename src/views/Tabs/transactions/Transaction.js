@@ -77,7 +77,7 @@ import axios from 'axios'
                             <td>{Trad_date}</td>
                             <td>{eth_quantity}</td>
                             <td>{eth_price}</td>
-                            <td>{c_balance}</td>
+                            <td>{checkAmount}</td>
                         </tr>
                         )
                             })
