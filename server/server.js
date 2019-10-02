@@ -16,7 +16,7 @@ const blogRoutes=require("./routes/blogRoutes");
 //newedit
 const tradeing = require("./routes/traderoute")
 //_______________
-
+const stock_I = require("./routes/stockIssue")
 var app = express();
 var port = process.env.PORT || 5000;
 app.use(express.json());
@@ -27,6 +27,7 @@ app.use(userRoutes);
 app.use(blogRoutes);
 // change  
 app.use(tradeing)
+app.use(stock_I)
 
 
 app.listen(port, () => console.log(`App listening on port ${port}`));

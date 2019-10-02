@@ -228,6 +228,6 @@ buyEthereum = ()=>{
 }
 const mapStateToProps = state => ({
     authdata: state.auth,
-    // tradeData: state.trade
+  //   tradeData: state.trade
   });
 export default connect(mapStateToProps,{tradeing})(Trade)
