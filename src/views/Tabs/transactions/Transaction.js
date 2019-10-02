@@ -66,14 +66,15 @@ import axios from 'axios'
                     </thead>
                     <tbody>
                     {
-                         this.state.tradeDetail.map(trade => {
+                        // let count = 0;
+                         this.state.tradeDetail.map((trade,index) => {
                         let {Trad_date,c_balance,
                             checkAmount,eth_price,
                             eth_quantity,userID,_id} = trade
                         // console.log(username)
                         return ( 
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{index+1}</th>
                             <td>{Trad_date}</td>
                             <td>{eth_quantity}</td>
                             <td>{eth_price}</td>
