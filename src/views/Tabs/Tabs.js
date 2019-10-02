@@ -18,7 +18,7 @@ export default class Tabs extends Component {
                         <a className="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Profile</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a>
+                        <a className="nav-link my-0" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a>
                     </li>
                 </ul>
                 <div className="tab-content p-0" id="myTabContent">

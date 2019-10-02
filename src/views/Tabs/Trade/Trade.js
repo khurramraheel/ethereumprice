@@ -80,18 +80,19 @@ class Trade extends Component {
     chageHandler = (e)=>{
         var name = e.target.name;
         var input_value = e.target.value;
-        console.log(name,input_value)
+        // console.log(name,input_value)
         
         //this.setState({eth_quantity:input_value})
         if(input_value)
         {
            //console.log(this.state)
             let {eth_price,c_balance} = this.state
-            console.log(this.state)
+            // console.log(this.state)
 
             let checkAmount = eth_price * input_value
             console.log("Check Amount",checkAmount)
             this.setState({checkAmount:checkAmount})
+            console.log(this.state)
                     if (checkAmount < c_balance)
                         {
                             // this.setState({eth_quantity:input_value})

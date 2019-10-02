@@ -21,19 +21,6 @@ import axios from 'axios'
             let body = JSON.stringify({
                 user
             })
-            // fetch('/showTrade', {
-
-            //     method:"POST",
-            //     body: body,
-            //     headers: {
-            //         "Content-type": "application/json;"
-            //     },
-            // }).then((res)=>{
-            //     return res.json();
-            // }).then((res)=>{
-            //     // this.setState({userDetail:res.users})
-            //     console.log(res);
-            // })
             axios.post('/showTrade', body, config)
                 .then(res =>
                     // console.log(res)
