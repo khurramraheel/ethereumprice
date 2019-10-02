@@ -17,11 +17,11 @@ class Trade extends Component {
             checkAmount: null,
            
         }
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
        
-=======
+// =======
         // student1 = new Student()
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
     }   
     date=()=>{
         let Fulldate = new Date();//Wed Sep 25 2019 11:08:03 GMT+0500 (Pakistan Standard Time)
@@ -64,13 +64,13 @@ class Trade extends Component {
             //eth_quantity:this.refs.eth_quantity.value,
             result: ""
         })
-<<<<<<< HEAD
+// <<<<<<< HEAD
         //  let {
         //      username
         //  } = this.props.username
          console.log(this.state)
-=======
-<<<<<<< Updated upstream
+// =======
+// <<<<<<< Updated upstream
        
         // axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD&e=Coinbase&extraParams=your_app_name')
         // .then(res =>{
@@ -78,12 +78,12 @@ class Trade extends Component {
         //     console.log(cryptos.USD);
         //     this.setState({cryptosrate:cryptos.USD})
         // })
-=======
+// =======
         //  let {
         //      username
         //  } = this.props.username
         //  console.log(this.state)
->>>>>>> 0648d9bbf1f0c384a73c40c0fb47d6c927797e3f
+// >>>>>>> 0648d9bbf1f0c384a73c40c0fb47d6c927797e3f
     }
 
 
@@ -91,7 +91,7 @@ class Trade extends Component {
     // state = {
     //     c_balance: this.refs.c_balance.value
     // } 
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
         
     }
     
@@ -139,13 +139,13 @@ class Trade extends Component {
 
         }
     }
-<<<<<<< Updated upstream
+
     buyEthereum = ()=>{
         this.state.userID = this.props.authdata.user._id
         let usertrade= this.state
         this.props.tradeing(usertrade)
         console.log(usertrade)
-=======
+    }
     buyEthereum = dispatch => {
          const config = {
              headers: {
@@ -176,7 +176,7 @@ class Trade extends Component {
              }))
              .catch(err => console.log(err))
         //  console.log(this.state.c_balance)
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
     }
     // buyEthereum = dispatch => {
         
