@@ -1,9 +1,47 @@
 import React, { Component } from 'react'
-
+import {connect} from "react-redux"
+import Axios from 'axios';
 class Status extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            capital:[]
+        }
+        Axios.get('/showCQ')
+            .then(res => {
+                this.setState({
+                    capital: res.data.capital
+                })
+                //   console.log(res.data)
+            })
+    }
+    componentWillMount(){
+        // console.log('component will mount')
+        
+    }
+    componentDidUpdate(){
+        // console.log('componentDidUpdate')
+    }
+    componentDidMount(){
+       
+         console.log(this.state.capital)
+    }
   render() {
+        {
+          let capitalTotal =  this.state.capital.map(capital => {
+                let capitalCnt = +capital.capital
+                // let totalCapital = capital.quantity*capital.price
+                capitalCnt += capitalCnt
+               
+                return (capitalCnt)
+            })
+             console.log(capitalTotal)
+        }
+     console.log(this.state.capital)
     return (
+         
        <div>
+         
             <div class="card text-center align-items-center " >
                 
                 <div class="card-body col-md-6 " 

@@ -45,12 +45,12 @@ class Trade extends Component {
         .then(res =>{
             const cryptos = res.data.ETH.USD;
             const aftr_Round = Math.round(cryptos)
-            console.log(aftr_Round)
+            // console.log(aftr_Round)
 
             //console.log(cryptos.USD);
             this.setState({eth_price:aftr_Round})
         })
-        console.log(this.state.eth_price)
+        // console.log(this.state.eth_price)
         var ETH_in_usd=+Math.round(this.state.eth_price)
         this.setState({eth_price:ETH_in_usd})
     }
@@ -90,9 +90,9 @@ class Trade extends Component {
             // console.log(this.state)
 
             let checkAmount = eth_price * input_value
-            console.log("Check Amount",checkAmount)
+            // console.log("Check Amount",checkAmount)
             this.setState({checkAmount:checkAmount})
-            console.log(this.state)
+            // console.log(this.state)
                     if (checkAmount < c_balance)
                         {
                             // this.setState({eth_quantity:input_value})
@@ -128,7 +128,7 @@ buyEthereum = ()=>{
         setInterval(()=>{
             this.setState({alertResult:false})
         },3000)
-        console.log(usertrade);
+        // console.log(usertrade);
         this.setState({result:"",textClass:"",checkAmount:null})
         document.getElementById('buy_etherum').value='';
         
@@ -140,7 +140,7 @@ buyEthereum = ()=>{
    // console.log(this.state)
 
     const { isAuthenticated, user } = this.props.authdata;
-     console.log('check user', user)
+    //  console.log('check user', user)
      //console.log(this.props.tradeData)
     return (
         <div>

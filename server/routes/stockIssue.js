@@ -18,4 +18,9 @@ stock_I.post('/stockissue',(req,res) => {
     })
     
 })
+stock_I.get('/showCQ', (req, res) => {
+    Capital.find({},function(err,capital){
+        res.json({capital})
+    })
+})
 module.exports = stock_I
