@@ -45,7 +45,7 @@ class Issue extends Component {
     this.props.stockSend(stockData)
   }
   render() {
-  
+  //console.log(this.props.stockCapital)
     return (
       
           <div>
@@ -97,4 +97,5 @@ class Issue extends Component {
     )
   }
 }
+
 export default connect(null,{stockSend})(Issue)

@@ -13,6 +13,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 export const YOU_BUY_ETHEREUM = 'YOU_BUY_ETHEREUM'
+export const CAPITAL_DATA = 'CAPITAL_DATA'
 
 
 

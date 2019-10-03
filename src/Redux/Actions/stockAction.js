@@ -12,8 +12,8 @@ import axios from "axios";
     axios.post('/stockissue', body, config)
             .then(res => dispatch({
                 
-                 type:"CAPITAL DATA",
-                 payload:res.data.trade
+                 type:"CAPITAL_DATA",
+                 payload:res.data.capital
              }))
              .catch(err => console.log(err))
         //  console.log(this.state.c_balance)

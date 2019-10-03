@@ -11,10 +11,12 @@ stock_I.post('/stockissue',(req,res) => {
         capital
     })
     newCapital.save().then(capital => {
+        
         res.json({
             success: true,
             capital:capital
         })
+        console.log("response",capital)
     })
     
 })
