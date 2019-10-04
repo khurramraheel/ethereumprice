@@ -5,39 +5,69 @@ class Status extends Component {
     constructor(props){
         super(props);
         this.state = {
-            capital:[]
+            capital:[],
+            capitalSum:''
         }
-        Axios.get('/showCQ')
+
+//         Axios.get('/showCQ')
+//         .then(res => {
+//             this.setState({
+//                 capital: res.data.capital
+//             })
+//             console.log(res.data)
+//         })
+// console.log(this.state)
+        
+    }
+   componentDidUpdate()
+   {
+       //GET Request to fetch data from Db
+
+            Axios.get('/showCQ')
             .then(res => {
                 this.setState({
                     capital: res.data.capital
                 })
-                //   console.log(res.data)
+               // console.log(res.data)
             })
-    }
-    componentWillMount(){
-        // console.log('component will mount')
-        
-    }
-    componentDidUpdate(){
-        // console.log('componentDidUpdate')
-    }
-    componentDidMount(){
-       
-         console.log(this.state.capital)
-    }
-  render() {
-        {
-          let capitalTotal =  this.state.capital.map(capital => {
+        //console.log(this.state)
+
+        //for capital count
+
+            let capitalTotal =  this.state.capital.map(capital => {
                 let capitalCnt = +capital.capital
-                // let totalCapital = capital.quantity*capital.price
-                capitalCnt += capitalCnt
-               
                 return (capitalCnt)
             })
-             console.log(capitalTotal)
-        }
-     console.log(this.state.capital)
+                //console.log("Capital Array = ",capitalTotal)
+                
+            this.capitalSum=0;
+            for (let index = 0; index < capitalTotal.length; index++) 
+            {
+                this.capitalSum = this.capitalSum + capitalTotal[index];
+            }
+                //console.log( "Capital Sum = ",this.capitalSum)
+
+        //for quantity count
+
+            let quantityTotal =  this.state.capital.map(capital => {
+                let quantityCnt = +capital.quantity
+                return (quantityCnt)
+            })
+                //console.log("Quantity Array = ",quantityTotal)
+
+            this.quantitySum=0;
+            for (let index = 0; index < quantityTotal.length; index++) 
+            {
+                this.quantitySum = this.quantitySum + quantityTotal[index];
+            }
+                //console.log("Quantity Sum = ",this.quantitySum)
+   
+   }
+   
+    
+  render() {
+      //console.log(this.state)
+      //console.log(this.capitalSum)
     return (
          
        <div>
@@ -49,10 +79,12 @@ class Status extends Component {
                     <div class="input-group mb-3" >
                         <div class="input-group-prepend">
                             <span class="input-group-text" 
-                            id="inputGroup-sizing-default">Capital</span>
+                            id="inputGroup-sizing-default">Total Capital</span>
                         </div>
                         <input  type="text" 
                             disabled
+                           // value={this.props.sum}
+                           value={this.capitalSum}
                             className="form-control p-4 text-white border-0"
                             aria-label="Sizing example input" 
                             style={{ background: "#23272B", color: "white" }}
@@ -61,28 +93,19 @@ class Status extends Component {
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" 
-                            id="inputGroup-sizing-default">Quantity</span>
+                            id="inputGroup-sizing-default">Total Quantities</span>
                         </div>
                         <input  
                             type="text" 
                             disabled
+                            value={this.quantitySum}
                             className="form-control p-4 text-white border-0"
                             aria-label="Sizing example input" 
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
                     </div>
                 </div>
-                <div class="card-footer text-muted">
-                    <button type="submit"
-                    className="input-grouptext btn btn-dark px-5 border-0"
-                    style={
-                      { backgrund: "", color: "white",
-                        fontWeight: "600",textAlign:'right' }
-                    }
-                    >
-                        SUBMIT
-                    </button>
-                </div> 
+                
             </div>
         </div>
     )

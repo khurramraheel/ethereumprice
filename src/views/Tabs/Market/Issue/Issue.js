@@ -80,6 +80,22 @@ class Issue extends Component {
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Total Capital</span>
+                        </div>
+                        <input  type="text" 
+                        disabled
+                        value={this.state.capital}
+                            id="totalCapital"
+                            ref="T_capital"
+                            name="t_capital"
+                            //onChange={this.changehandler}
+                            className="form-control p-4 text-white border-0"
+                            aria-label="Sizing example input" 
+                            style={{ background: "#23272B", color: "white" }}
+                            aria-describedby="inputGroup-sizing-default"/>
+                    </div>
                 </div>
                 <div class="card-footer text-muted">
                         <button type="submit" 
