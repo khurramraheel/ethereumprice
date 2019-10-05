@@ -26,4 +26,11 @@ stock_I.get('/showCQ', (req, res) => {
         console.log(capital)
     })
 })
+stock_I.get('/showHistory', (req, res) => {
+    Capital.find({}, function (err, capital) {
+        res.json({
+            capital
+        })
+    })
+})
 module.exports = stock_I

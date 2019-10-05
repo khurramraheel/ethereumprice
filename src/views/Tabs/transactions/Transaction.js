@@ -34,9 +34,6 @@ import axios from 'axios'
         getTradeData()
 
     }
-    componentDidMount(){
-        // axios.post('/')
-    }
     render() {
         // console.log(this.state)
        return(
