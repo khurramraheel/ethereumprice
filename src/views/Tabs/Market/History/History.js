@@ -6,7 +6,7 @@ class History extends Component {
     this.state = {
       capitalDetail:[]
     }
-    let getTradeData = () => {
+     getHistoryData = () => {
       const config = {
         headers: {
           "Content-Type": "application/json"
@@ -28,7 +28,7 @@ class History extends Component {
         })
         .catch(err => {})
     }
-    getTradeData()
+    getHistoryData()
   }
   render() {
     return (
@@ -68,3 +68,4 @@ class History extends Component {
 }
 
 export default History
+export let getHistoryData;

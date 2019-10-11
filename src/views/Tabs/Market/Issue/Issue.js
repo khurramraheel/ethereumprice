@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import {stockSend} from '../../../../Redux/Actions/stockAction'
+import Count from '../Status/Status'
 class Issue extends Component {
   constructor(props){
     super(props);
     this.state={
       price:'',
       quantity:'',
-      capital:''
+      capital:'',
+      alertResult:false
     }
+    
+    //console.log(this.props.Userrole)
    
   }
   componentDidMount(){
     this.refs.subIssue.disabled = true
+    this.setState({role:this.props.role})
   }
   
   changehandler = (e)=>{
@@ -29,6 +34,7 @@ class Issue extends Component {
 
       })
       this.refs.subIssue.disabled = false
+      
     } 
     else 
     {
@@ -43,9 +49,21 @@ class Issue extends Component {
     var stockData= this.state;
     console.log("stockData to be send to action = ",stockData)
     this.props.stockSend(stockData)
+    this.setState({alertResult:true})
+    setInterval(()=>{
+        this.setState({alertResult:false})
+    },3000)
+    document.getElementById('Price').value='';
+    document.getElementById('Quantity').value=''
+
+    this.changehandler()
+    
+    //document.getElementById('totalCapital').value='';
+
   }
   render() {
-  //console.log(this.props.stockCapital)
+  console.log(this.state)
+  console.log(this.props.msg)
     return (
       
           <div>
@@ -80,7 +98,7 @@ class Issue extends Component {
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
                     </div>
-                    <div class="input-group mb-3">
+                    {/* <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Total Capital</span>
                         </div>
@@ -95,7 +113,12 @@ class Issue extends Component {
                             aria-label="Sizing example input" 
                             style={{ background: "#23272B", color: "white" }}
                             aria-describedby="inputGroup-sizing-default"/>
-                    </div>
+                    </div> */}
+                    <p className="text-success">
+                        {
+                            this.state.alertResult ?  this.state.capital + " Are added to the Total of Capital"  : null
+                        }
+                    </p>
                 </div>
                 <div class="card-footer text-muted">
                         <button type="submit" 
@@ -113,5 +136,11 @@ class Issue extends Component {
     )
   }
 }
-
-export default connect(null,{stockSend})(Issue)
+const mapStatetoprops = state =>({
+  //Userrole : state.auth.user.role
+  //email : state.auth.user.email
+  role : state.auth.user.role,
+  msg:state.stockIssue
+  
+})
+export default connect(mapStatetoprops,{stockSend})(Issue)
