@@ -9,7 +9,8 @@ class Status extends Component {
             // capitalSum:''
         }
         
-
+        
+ //GET Request to fetch data from Db
 
  getCapital = ()=>{
     Axios.get('/showCQ')
