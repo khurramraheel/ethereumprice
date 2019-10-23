@@ -61,36 +61,15 @@ class Trade extends Component {
             c_balance: this.refs.c_balance.value,
             result: ""
         })
-// <<<<<<< HEAD
-        //  let {
-        //      username
-        //  } = this.props.username
+
          console.log(this.state)
-// =======
-// <<<<<<< Updated upstream
-       
-        // axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD&e=Coinbase&extraParams=your_app_name')
-        // .then(res =>{
-        //     const cryptos = res.data.ETH;
-        //     console.log(cryptos.USD);
-        //     this.setState({cryptosrate:cryptos.USD})
-        // })
-// =======
-        //  let {
-        //      username
-        //  } = this.props.username
-        //  console.log(this.state)
-// >>>>>>> 0648d9bbf1f0c384a73c40c0fb47d6c927797e3f
+
     }
 
 
-	
-    // state = {
-    //     c_balance: this.refs.c_balance.value
-    // } 
-// >>>>>>> Stashed changes
-        
-    }
+
+  
+    
 
 
     chageHandler = (e)=>{
@@ -209,7 +188,7 @@ class Trade extends Component {
     //          .catch(err => console.log(err))
         
         //this.refs.subAmount.disabled=false;
-    }
+
   render() {
     
     
