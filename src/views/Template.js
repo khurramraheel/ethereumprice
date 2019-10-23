@@ -438,9 +438,9 @@ class Template extends Component {
         </div>
         <div className="container text-white">
           {
-            // isAuthenticated ? <Tabs/> : null
+            isAuthenticated ? <Tabs/> : null
           }
-          < Tabs/>
+          {/* < Tabs/> */}
         </div>
         {/* <div className="container">
           <p className="text-black text-center">

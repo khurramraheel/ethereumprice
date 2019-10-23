@@ -9,23 +9,30 @@ import axios from 'axios'
         this.state = {
             tradeDetail: []
         }
-        // 
-        fetch('/showTrade', {
-            method:"GET"
-        }).then((res)=>{
-            return res.json();
-        }).then((res)=>{
-            this.setState({tradeDetail:res.users})
-            // console.log(res);
-        })
-        // axios.get('/showTrade').then(res => res.json())
-        // .then(res => {
-        //     console.log(res)
-        // })
+        //
 
-    }
-    componentDidMount(){
-        // axios.post('/')
+         getTradeData = () =>{
+            const config = {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+            let user = this.props.authdata.user
+            let body = JSON.stringify({
+                user
+            })
+            axios.post('/showTrade', body, config)
+                .then(res =>
+                    // console.log(res)
+                    this.setState({
+                        tradeDetail: res.data.trades
+                    })
+                    // res.json()
+                )
+                .catch(err => {})
+        }
+        getTradeData()
+
     }
     render() {
         // console.log(this.state)
@@ -43,16 +50,19 @@ import axios from 'axios'
                     </thead>
                     <tbody>
                     {
-                         this.state.tradeDetail.map(trade => {
-                        let {username} = trade
+                        // let count = 0;
+                         this.state.tradeDetail.map((trade,index) => {
+                        let {Trad_date,c_balance,
+                            checkAmount,eth_price,
+                            eth_quantity,userID,_id} = trade
                         // console.log(username)
                         return ( 
                         <tr>
-                            <th scope="row">1</th>
-                            <td>12/03/2019</td>
-                            <td>{username}</td>
-                            <td>$150</td>
-                            <td>2500</td>
+                            <th scope="row">{index+1}</th>
+                            <td>{Trad_date}</td>
+                            <td>{eth_quantity}</td>
+                            <td>{eth_price}</td>
+                            <td>{checkAmount}</td>
                         </tr>
                         )
                             })
@@ -63,4 +73,10 @@ import axios from 'axios'
        )
     }
 }
-export default connect()(Transaction)
+let mapStateToProps = state =>({
+        authdata: state.auth
+        // tradeInfo:state.trade_info
+   
+})
+export default connect(mapStateToProps)(Transaction);
+export let getTradeData

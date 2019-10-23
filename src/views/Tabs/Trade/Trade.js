@@ -15,13 +15,11 @@ class Trade extends Component {
             eth_price:"",
             Trad_date:"",
             checkAmount: null,
-           
+             username:"",
+             eth_quantity:"",
+             alertResult:false
         }
-// <<<<<<< Updated upstream
-       
-// =======
-        // student1 = new Student()
-// >>>>>>> Stashed changes
+
     }   
     date=()=>{
         let Fulldate = new Date();//Wed Sep 25 2019 11:08:03 GMT+0500 (Pakistan Standard Time)
@@ -46,12 +44,12 @@ class Trade extends Component {
         .then(res =>{
             const cryptos = res.data.ETH.USD;
             const aftr_Round = Math.round(cryptos)
-            console.log(aftr_Round)
+            // console.log(aftr_Round)
 
             //console.log(cryptos.USD);
             this.setState({eth_price:aftr_Round})
         })
-        console.log(this.state.eth_price)
+        // console.log(this.state.eth_price)
         var ETH_in_usd=+Math.round(this.state.eth_price)
         this.setState({eth_price:ETH_in_usd})
     }
@@ -61,7 +59,6 @@ class Trade extends Component {
             //eth_price: this.refs.eth_price.value,
            //eth_price:ETH_in_usd,
             c_balance: this.refs.c_balance.value,
-            //eth_quantity:this.refs.eth_quantity.value,
             result: ""
         })
 // <<<<<<< HEAD
@@ -94,23 +91,24 @@ class Trade extends Component {
 // >>>>>>> Stashed changes
         
     }
-    
+
 
     chageHandler = (e)=>{
         var name = e.target.name;
         var input_value = e.target.value;
-        console.log(name,input_value)
+        // console.log(name,input_value)
         
         //this.setState({eth_quantity:input_value})
         if(input_value)
         {
            //console.log(this.state)
             let {eth_price,c_balance} = this.state
-            console.log(this.state)
+            // console.log(this.state)
 
             let checkAmount = eth_price * input_value
-            console.log("Check Amount",checkAmount)
+            // console.log("Check Amount",checkAmount)
             this.setState({checkAmount:checkAmount})
+            // console.log(this.state)
                     if (checkAmount < c_balance)
                         {
                             // this.setState({eth_quantity:input_value})
@@ -209,20 +207,19 @@ class Trade extends Component {
     //              payloda:res.data.trade
     //          }))
     //          .catch(err => console.log(err))
-    //     //  console.log(this.state.c_balance)
         
-    // }
+        //this.refs.subAmount.disabled=false;
+    }
   render() {
     
-    //console.log(ETH_in_usd)
-    console.log(this.state)
+    
+   // console.log(this.state)
 
     const { isAuthenticated, user } = this.props.authdata;
-     console.log('check user', user)
+    //  console.log('check user', user)
+     //console.log(this.props.tradeData)
     return (
-        
         <div>
-            {console.log(user ? user.username: "")}
             <div class="card text-center align-items-center " >
                 
                 <div class="card-body col-md-6 " style={{backgroundColor:'black !important'}}>    
@@ -230,13 +227,11 @@ class Trade extends Component {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Current Balance PKR</span>
                         </div>
-                        
                         <input  type="text" 
                             disabled
                             id="currentbalance"
                             className="form-control p-4 text-white border-0"
                             aria-label="Sizing example input" 
-                            //value={ETH_in_usd.USD}
                             value="25000"
                             ref="c_balance"
                             style={{ background: "#23272B", color: "white" }}

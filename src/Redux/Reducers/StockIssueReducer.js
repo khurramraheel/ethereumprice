@@ -7,10 +7,11 @@ import {
     USER_LOADING,
     AUTH_ERROR,
     LOGOUT_SUCCESS,
-    YOU_BUY_ETHEREUM
+    YOU_BUY_ETHEREUM,
+    CAPITAL_DATA
   } from "../Actions/types";
   const initialState = {
-    trade_info:null,
+    stock_Ifo:null,
         // eth_price:'',
         // c_balance:'',
         // checkAmount:'',
@@ -19,14 +20,14 @@ import {
         // userID:''
   };
   
-   function tradeing(state = initialState, action) {
+   function stockSend(state = initialState, action) {
     switch (action.type) {
-      case YOU_BUY_ETHEREUM:
+      case CAPITAL_DATA:
       console.log(action.payload)
         return {
 
           ...state,
-          trade_info:action.payload
+          stock_Ifo:action.payload
         };
         
         break;
@@ -35,4 +36,4 @@ import {
         return state;
     }
   }
-  export default tradeing;
+  export default stockSend;
