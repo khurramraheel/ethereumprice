@@ -6,7 +6,9 @@ import {
   USER_LOADED,
   USER_LOADING,
   AUTH_ERROR,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  UPDATE_FAILED,
+  UPDATE_SUCCESS
 } from "../Actions/types";
 
 const initialState = {
@@ -34,6 +36,7 @@ export default function(state = initialState, action) {
       break;
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
+    case UPDATE_SUCCESS:
       localStorage.setItem('token', action.payload.token);
       // console.log('huihluhih',action.payload.user.password);
       return {
@@ -49,6 +52,7 @@ export default function(state = initialState, action) {
     case REGISTER_FAILED:
     case AUTH_ERROR:
     case LOGOUT_SUCCESS:
+    case UPDATE_FAILED:
       localStorage.removeItem('token')
         return {
             ...state,

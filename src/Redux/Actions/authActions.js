@@ -7,7 +7,9 @@ import {
     USER_LOADED,
     USER_LOADING,
     AUTH_ERROR,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    UPDATE_FAILED,
+    UPDATE_SUCCESS
   } from "./types";
   import { returnErrors } from './errorActions';
 
@@ -57,6 +59,29 @@ import {
         dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")),
         dispatch({
         type: LOGIN_FAILED,
+
+    }))
+  }
+
+  export const update = ( {username, email, password, oldpassword} ) => dispatch => {
+    const config = {
+        headers: {
+            "Content-Type":"application/json"
+        }
+    }
+    const body = JSON.stringify({ username, email, password, oldpassword})
+
+    axios.post('/update', body, config)
+    .then( res => dispatch({
+        type: UPDATE_SUCCESS,
+        payload: res.data,
+      
+        
+    }))
+    .catch(err => 
+        dispatch(returnErrors(err.response.data, err.response.status, "UPdATE_FAIL")),
+        dispatch({
+        type: UPDATE_FAILED,
 
     }))
   }

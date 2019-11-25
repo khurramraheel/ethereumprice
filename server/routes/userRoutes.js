@@ -86,6 +86,72 @@ router.post("/login", (req, res) => {
   });
 });
 
+
+
+router.post("/update", (req, res) => {
+  const { username, email, password , oldppassword  } = req.body;
+
+//simple Validation
+if (!email || !password) {
+  return res.status(400).json({ msg: "please enter all fields" });
+}
+
+
+ 
+//Check for existence
+User.findOne({ email }).then(user => {
+  if (!user) {
+    return res.status(400).json({ msg: "user does not exist " });
+  }
+ 
+  // Validate password
+  bcrypt.compare(password, user.password)
+  .then(isMatch => {
+      if(!isMatch)  return res.status(400).json({msg: "Invalid Credentials"})
+
+      const uuser = {
+        username,
+        email,
+        password,
+        oldpassword
+      };
+
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(uuser.password, salt, (err, hash) => {
+          if (err) throw err;
+          console.log(hash)
+          uuser.password = hash
+          console.log(uuser);
+
+        });
+      })
+      User.findOneAndUpdate(email , {$set:{username: user.username , password : user.password}},(err, doc) =>{
+        if(err){
+            console.log("Something wrong when updating data!");
+        }
+
+      
+
+      
+      
+
+      jwt.sign(
+          { id: user.id },
+          "secret_key",
+          { expiresIn: 3600 },
+          (err, token) => {
+            if (err) throw err;
+            res.json({
+                token,
+              user
+            });
+          }
+        );
+      })
+  })
+});
+});
+
 router.get('/user', auth,  (req, res) => {
     User.findById(req.user.id)
     .select("-password")
