@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import Trade from '../Tabs/Trade/Trade'
 import Profile from './Profile/Profile'
 import Market from './Market/Market'
-import Transaction from './Transactions/Transaction'
+// import Transaction from './transactions/Transaction'
+import Transaction from './transactions/Transaction'
 import { connect } from 'react-redux';
 
  class Tabs extends Component {
     componentWillMount() {
-            
+             
     }
    
     render() {
@@ -28,7 +29,9 @@ import { connect } from 'react-redux';
                     </li> */}
                     <li className="nav-item">
                     {
-                        this.props.adminRoleauth.role ? <a className="nav-link my-0" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a> : null
+                        this.props.adminRoleauth.role 
+                        // true
+                        ? <a className="nav-link my-0" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a> : null
                     }
                     </li>
                     
@@ -38,9 +41,13 @@ import { connect } from 'react-redux';
                     <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><Transaction /></div>
                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><Trade/></div>
                     <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><Profile /></div>
+                    {/* <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">something here </div> */}
+
                     <div className="tab-pane fade" id="market" role="tabpanel" aria-labelledby="market-tab">
                     {
-                         this.props.adminRoleauth.role ? <Market/>:null
+                         this.props.adminRoleauth.role 
+                        // true
+                         ? <Market />:null
                     }
                     </div>
                     
@@ -48,6 +55,7 @@ import { connect } from 'react-redux';
                     <Market/>
                     
                     </div> */}
+                    {/* <Market /> */}
                
                 </div>
             </div>

@@ -3,6 +3,7 @@ var stock_I = require("express").Router();
 // const router = require("express").Router();
 const isAdmin = require("../routes/middleware/isAdmin")
 const Capital = require("../models/capitalmodel");
+
 stock_I.post('/stockissue', isAdmin, (req, res) => {
     // console.log("stock issue Data", req.body)
     const { price, quantity, capital } = req.body;

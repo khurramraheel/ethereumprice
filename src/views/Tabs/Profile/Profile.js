@@ -33,7 +33,7 @@ export class Profile extends Component {
       password,
       oldpassword
     }
-    this.props.update(user);
+    this.props.updateUser(user);
 
     
   };
@@ -47,7 +47,7 @@ export class Profile extends Component {
       const { username, email, password, oldpassword } = this.state;
       return (
 
-        <form onClick={this.handleUpdate} style={{ width: "30%", margin: "auto" }}>
+        <form onSubmit={this.handleUpdate} style={{ width: "30%", margin: "auto" }}>
 
           <div class="form-group" >
             <label for="exampleInputUsername">User name</label>
@@ -57,7 +57,10 @@ export class Profile extends Component {
               onChange={this.handleChange}
               name = "username"
               value={username}
-              placeholder={user.username} />
+              // placeholder={user.username} 
+              placeholder="Username"
+
+              />
 
           </div>
           <div class="form-group">
@@ -70,7 +73,10 @@ export class Profile extends Component {
               name = "email"
               value={email}
               aria-describedby="emailHelp"
-              placeholder={user.email} />
+              // placeholder={user.email} 
+              placeholder="Your email" 
+
+              />
 
           </div>
           <div class="form-group">
@@ -82,7 +88,9 @@ export class Profile extends Component {
               onChange={this.handleChange}
               name = "oldpassword"
               value={oldpassword}
-              placeholder={user.password} />
+              placeholder="Old-Password" 
+              // placeholder={user.password} 
+              />
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">New Password</label>
@@ -108,13 +116,15 @@ export class Profile extends Component {
     }
   
 }
-const mapDispatchToProps = () =>  {
+const mapDispatchToProps = (dispatch) =>  {
 return {
-  // update : 
+      updateUser: (user)=>{
+        dispatch(update(user))
+      }
 }
 }
 const mapStateToProps = state => ({
   auth: state.auth.user
 
 });
-export default connect(mapStateToProps)(Profile); 
+export default connect(mapStateToProps,mapDispatchToProps)(Profile); 

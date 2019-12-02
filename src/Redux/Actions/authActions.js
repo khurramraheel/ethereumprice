@@ -15,27 +15,54 @@ import {
 
   //RegisterUser
 
-  export const register = ({ username, email, password }) => dispatch => {
+  export function register(data){
+      return dispatch => {
 
-    const config = {
-        headers: {
-            "Content-Type":"application/json"
-        }
-    }
-    const body = JSON.stringify({ username, email, password })
+            const config = {
+                headers: {
+                    "Content-Type":"application/json"
+                }
+            }
+            // const body = JSON.stringify({ username, email, password })
+            console.log(data);
+            
+            axios.post('/register', data, config)
+            .then( res => dispatch({
+                type: REGISTER_SUCCESS,
+                payload: res.data
+            }))
+            .catch(err => 
+                dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")),
+                dispatch({
+                type: REGISTER_FAILED,
+        
+            }))
+          } 
+  }
 
-    axios.post('/register', body, config)
-    .then( res => dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data
-    }))
-    .catch(err => 
-        dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")),
-        dispatch({
-        type: REGISTER_FAILED,
 
-    }))
-  } 
+//   export const register = ({ username, email, password }) => dispatch => {
+
+//     const config = {
+//         headers: {
+//             "Content-Type":"application/json"
+//         }
+//     }
+//     const body = JSON.stringify({ username, email, password })
+//     console.log(body);
+    
+//     axios.post('/register', body, config)
+//     .then( res => dispatch({
+//         type: REGISTER_SUCCESS,
+//         payload: res.data
+//     }))
+//     .catch(err => 
+//         dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")),
+//         dispatch({
+//         type: REGISTER_FAILED,
+
+//     }))
+//   } 
 
   //LOGIN USER
   
@@ -69,7 +96,9 @@ import {
             "Content-Type":"application/json"
         }
     }
-    const body = JSON.stringify({ username, email, password, oldpassword})
+    const body = { username, email, password, oldpassword}
+    console.log(body);
+     
 
     axios.post('/update', body, config)
     .then( res => dispatch({

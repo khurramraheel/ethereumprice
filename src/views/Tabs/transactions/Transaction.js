@@ -4,7 +4,7 @@ import axios from 'axios'
 
  class Transaction extends Component {
      
-    constructor(props){
+    constructor(props){ 
         super(props);
         this.state = {
             tradeDetail: []

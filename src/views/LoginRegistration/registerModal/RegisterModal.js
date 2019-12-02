@@ -38,10 +38,10 @@ class LoginModal extends Component {
 
   componentDidUpdate(prevProps) {
     fetch('/getBlogs', {
-      method:'GET',
-    }).then((res)=>{
-return res.json();
-    }).then((res)=>{
+      method: 'GET',
+    }).then((res) => {
+      return res.json();
+    }).then((res) => {
       // console.log(res)
     })
     // const { error } = this.props;
@@ -58,13 +58,17 @@ return res.json();
   }
 
   handleChange = evt => {
+
+
     this.setState({
       [evt.target.name]: evt.target.value
     });
+
   };
 
   handleSignup = e => {
     e.preventDefault();
+
 
     const { username, email, password } = this.state;
 
@@ -76,7 +80,7 @@ return res.json();
     };
 
     this.props.register(newUser);
-    
+
     this.setState({
         username:'',
         email:'',
@@ -94,21 +98,21 @@ return res.json();
   };
   render() {
     // console.log(this.state);
-    const { username, email, password, password_confirm} = this.state
+    const { username, email, password, password_confirm } = this.state
     return (
       <div>
-        <Button type="button" color="secondary" onClick={this.toggle} className="btn bg-dark btn-outline-dark text-white pl-2" style={{fontSize:"12px", borderRadius:"5px 0px 0px 5px"}}>
+        <Button type="button" color="secondary" onClick={this.toggle} className="btn bg-dark btn-outline-dark text-white pl-2" style={{ fontSize: "12px", borderRadius: "5px 0px 0px 5px" }}>
           Sign Up
         </Button>
         <Modal
           isOpen={this.state.modalOpen}
           toggle={this.toggle}
           className={this.props.className}
-          
-          >
+
+        >
           {/* <ModalHeader toggle={this.toggle}>Register Form</ModalHeader> */}
           <ModalBody
-          style = {{ backgroundColor:'#666'}}
+            style={{ backgroundColor: '#666' }}
           >
             {this.state.msg ? (
               <Alert color="danger">{this.state.msg}</Alert>
@@ -116,16 +120,16 @@ return res.json();
 
             <div className="signup-wrap">
               <div className="signup-html">
-              
-                
+
+
                 {/* <input id="tab-2" type="radio" name="tab" className="sign-up" checked /> */}
                 <labe for="tab-2" className="tab">
                   Sign Up
                 </labe>
                 <div className="signup-form">
 
-                    <form onSubmit={this.handleSignup}>
-                  <div className="sign-up-htm">
+                  <form onSubmit={this.handleSignup}>
+                    <div className="sign-up-htm">
                       <div className="group">
                         <label for="user" className="label">
                           Username
@@ -137,7 +141,7 @@ return res.json();
                           name="username"
                           required
                           onChange={this.handleChange}
-                          value = { username }
+                          value={username}
                         />
                       </div>
                       <div className="group">
@@ -151,7 +155,7 @@ return res.json();
                           name="email"
                           required
                           onChange={this.handleChange}
-                          value = { email }
+                          value={email}
                         />
                       </div>
                       <div className="group">
@@ -166,7 +170,7 @@ return res.json();
                           name="password"
                           required
                           onChange={this.handleChange}
-                          value = { password }
+                          value={password}
                         />
                       </div>
                       <div className="group">
@@ -178,20 +182,38 @@ return res.json();
                           type="password"
                           className="input"
                           data-type="password"
-                          name="confirm-password"
+                          name="password_confirm"
                           onChange={this.handleChange}
-                          value = { password_confirm }
+                          value={password_confirm}
+                          onBlur={() => {
+                            if (this.state.password !== this.state.password_confirm) {
+                              this.setState({
+                                msg: "Err: Password didn't match."
+                              })
+                            }else{
+                              this.setState({
+                                msg: ""
+                              })
+                            }
+                          }}
                         />
+                        {/* {this.state.msg ? <span style={{
+                          padding: "10px",
+                          fontSize: '11px',
+                          color: "#b53b3b",
+                          float: 'right'
+                        }}>
+                        {this.state.msg}</span> : ""} */}
                       </div>
                       <div className="group">
-                       <button className = "button">Sign Up</button>
+                        <button className="button">Sign Up</button>
                       </div>
                       <div className="hr" />
                       <div className="foot-lnk">
-                        <label for="tab-1" className = 'chck'>Already Member?</label>
+                        <label for="tab-1" className='chck'>Already Member?</label>
                       </div>
-                  </div>
-                    </form>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -242,7 +264,7 @@ return res.json();
             </Button>
           </ModalFooter> */}
         </Modal>
-      </div>
+      </div >
     );
   }
 }

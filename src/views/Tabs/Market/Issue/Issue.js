@@ -5,7 +5,7 @@ import Count from '../Status/Status'
 class Issue extends Component {
   constructor(props){
     super(props);
-    this.state={
+    this.state={    
       price:'',
       quantity:'',
       capital:'',
@@ -23,7 +23,7 @@ class Issue extends Component {
   changehandler = (e)=>{
     var issuepricee = this.refs.issue_price.value;
     var quantity = this.refs.quantity.value;
-    if (issuepricee!=="" && quantity!== "") 
+    if (issuepricee !=="" && quantity !== "") 
     {
       let capital = issuepricee * quantity
       console.log("after multiply capital = ", capital)

@@ -18,7 +18,7 @@ import {getHistoryData} from '../../views/Tabs/Market/History/History'
                  type:"CAPITAL_DATA",
                  payload:res.data.capital
                 
-             }
+             } 
         )
     ).then(res => {
         getCapital()
