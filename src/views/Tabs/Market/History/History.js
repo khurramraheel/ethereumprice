@@ -4,7 +4,8 @@ class History extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      capitalDetail: []
+      capitalDetail: [],
+      total: {}
     }
     getHistoryData = () => {
       const config = {
@@ -15,15 +16,16 @@ class History extends Component {
       // let user = this.props.authdata.user
       let body = JSON.stringify({
         // user
-      })
+      }) 
       axios.get('/showHistory')
         .then(res => {
           // console.log(res)
           this.setState({
-            capitalDetail: res.data.capital
+            capitalDetail: res.data.capital,
+            total: res.data.total
 
           })
-          console.log(res.data.capital)
+          console.log(res.data.total)
           // res.json()
         })
         .catch(err => { })
@@ -61,6 +63,15 @@ class History extends Component {
               })
             }
           </tbody>
+          <tfoot>
+          <tr>
+              <th scope="col">Total</th>
+              <th scope="col">{this.state.total.totalPrice}</th>
+              <th scope="col">{this.state.total.totalQty}</th>
+              <th scope="col">{this.state.total.totalCapital}</th>
+              {/* <th scope="col">Amount</th> */}
+            </tr>
+          </tfoot>
         </table>
       </div>
     )

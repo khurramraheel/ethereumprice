@@ -5,7 +5,7 @@ import Market from './Market/Market'
 // import Transaction from './transactions/Transaction'
 import Transaction from './transactions/Transaction'
 import { connect } from 'react-redux';
-
+import User from './Users/user'
  class Tabs extends Component {
     componentWillMount() {
              
@@ -27,11 +27,27 @@ import { connect } from 'react-redux';
                     {/* <li className="nav-item">
                         <a className="nav-link my-0" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a>
                     </li> */}
+
                     <li className="nav-item">
                     {
                         this.props.adminRoleauth.role 
                         // true
-                        ? <a className="nav-link my-0" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a> : null
+                        ?
+                        <a className="nav-link my-0" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">Market</a> 
+                        
+                        : 
+                        null
+                    }
+                    </li>
+                    <li className="nav-item">
+                    {
+                        this.props.adminRoleauth.role 
+                        // true
+                        ?
+                        <a className="nav-link my-0" id="user-tab" data-toggle="tab" href="#users" role="tab" aria-controls="market" aria-selected="false">Users</a> 
+
+                        : 
+                        null
                     }
                     </li>
                     
@@ -41,7 +57,7 @@ import { connect } from 'react-redux';
                     <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><Transaction /></div>
                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><Trade/></div>
                     <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><Profile /></div>
-                    {/* <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">something here </div> */}
+                    <div className="tab-pane fade" id="users" role="tabpanel" aria-labelledby="user-tab"><User /> </div>
 
                     <div className="tab-pane fade" id="market" role="tabpanel" aria-labelledby="market-tab">
                     {
@@ -62,6 +78,7 @@ import { connect } from 'react-redux';
         )
     }
 }
+
 const mapStatetoprops = (store)=>({
 //console.log(store.auth.user)
  adminRoleauth:store.auth.user

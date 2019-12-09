@@ -18,7 +18,7 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 export const YOU_BUY_ETHEREUM = 'YOU_BUY_ETHEREUM'
 export const CAPITAL_DATA = 'CAPITAL_DATA'
 
-
+export const GET_USER = 'GET_USER'
 
 
 

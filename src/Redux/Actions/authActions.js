@@ -31,7 +31,7 @@ import {
                 type: REGISTER_SUCCESS,
                 payload: res.data
             }))
-            .catch(err => 
+            .catch(err =>  
                 dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")),
                 dispatch({
                 type: REGISTER_FAILED,

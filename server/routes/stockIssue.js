@@ -31,9 +31,24 @@ stock_I.get('/showCQ', (req, res) => {
     })
 })
 stock_I.get('/showHistory', (req, res) => {
+
+    let total = {
+        totalPrice: 0,
+        totalQty: 0,
+        totalCapital: 0
+    }
+
     Capital.find({}, function (err, capital) {
+        capital.map((item)=>{
+
+            total.totalPrice = total.totalPrice + parseInt(item.price)
+            total.totalQty = total.totalQty + parseInt(item.quantity)
+            total.totalCapital = total.totalCapital + parseInt(item.capital)
+            
+        })
         res.json({
-            capital
+            capital,
+            total
         })
     })
 })

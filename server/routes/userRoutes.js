@@ -161,7 +161,13 @@ router.get('/user', auth, (req, res) => {
     .then(user => res.json(user))
 })
 
-
+router.get('/get_user', (req, res) => {
+  User.find({}, function (err, userlist) {
+      res.json({
+        userlist
+      })
+  })
+})
 router.post("/logout", (req, res) => { });
 
 module.exports = router;
