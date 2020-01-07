@@ -15,10 +15,10 @@ const initialState = {
   token: localStorage.getItem('token'),
   isLoading: false,
   isAuthenticated: null,
-  user: {role: 'admin'}
+  user: { role: 'admin' }
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case USER_LOADING:
       return {
@@ -41,29 +41,34 @@ export default function(state = initialState, action) {
       // console.log('huihluhih',action.payload.user);
       return {
         ...state,
-        user:action.payload.user,
-        
-        
+        user: action.payload.user,
+
+
         // password:action.payload.password,
-        token:action.payload.token,
+        token: action.payload.token,
         isAuthenticated: true,
         isLoading: false
       };
       break;
-    case LOGIN_FAILED: 
+    case LOGIN_FAILED:
     case REGISTER_FAILED:
     case AUTH_ERROR:
     case LOGOUT_SUCCESS:
     case UPDATE_FAILED:
       localStorage.removeItem('token')
-        return {
-            ...state,
-            isLoading:false,
-            isAuthenticated:false,
-            token:null,
-            user: null
-        }
+      return {
+        ...state,
+        isLoading: false,
+        isAuthenticated: false,
+        token: null,
+        user: null
+      }
       break;
+    case 'TOKEN_CONFIRMED':
+    case 'FORGOT_PASSWORD':
+    case 'PASSWORD_CHANGED':
+      console.log(action.payload);
+      
     default:
       return state;
   }

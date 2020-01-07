@@ -158,3 +158,54 @@ import {
  }
  return config
   }
+
+
+  
+export const forgotPassword = (data) => {
+    return dispatch =>{
+
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }  
+
+    axios.post('/forgotpassword',data, config)
+        .then(res => dispatch({
+
+            type: "FORGOT_PASSWORD",
+            payload: res.data.capital
+
+        }
+        ))
+        .catch(err => console.log(err))
+        
+    }
+
+}
+
+  
+export const setNewPassword = (data) => {
+    return dispatch =>{
+
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }  
+    console.log(data);
+    
+    
+    axios.post('/change_password',data)
+        .then(res => dispatch({
+
+            type: "PASSWORD_CHANGED",
+            payload: res.data.capital
+
+        }
+        ))
+        .catch(err => console.log(err))
+        
+    }
+
+}

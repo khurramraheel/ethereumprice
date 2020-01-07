@@ -8,7 +8,8 @@ import {
     AUTH_ERROR,
     LOGOUT_SUCCESS,
     YOU_BUY_ETHEREUM,
-    CAPITAL_DATA
+    CAPITAL_DATA,
+    PROFIT_ADDED
   } from "../Actions/types";
   const initialState = {
     stock_Ifo:null,
@@ -31,6 +32,13 @@ import {
         };
         
         break;
+        case PROFIT_ADDED:
+          console.log(action.payload);
+          return{
+            stock_Ifo: action.payload
+          }
+          break;
+          
       
       default:
         return state;

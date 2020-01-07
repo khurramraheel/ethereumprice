@@ -20,6 +20,8 @@ export const CAPITAL_DATA = 'CAPITAL_DATA'
 
 export const GET_USER = 'GET_USER'
 
+export const PROFIT_ADDED = 'PROFIT_ADDED'
+
 
 
 

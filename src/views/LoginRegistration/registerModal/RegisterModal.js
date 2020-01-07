@@ -197,13 +197,7 @@ class LoginModal extends Component {
                             }
                           }}
                         />
-                        {/* {this.state.msg ? <span style={{
-                          padding: "10px",
-                          fontSize: '11px',
-                          color: "#b53b3b",
-                          float: 'right'
-                        }}>
-                        {this.state.msg}</span> : ""} */}
+                        
                       </div>
                       <div className="group">
                         <button className="button">Sign Up</button>
@@ -218,51 +212,8 @@ class LoginModal extends Component {
               </div>
             </div>
 
-            {/* <Form onSubmit = { this.handleSubmit }>
-            <FormGroup>
-                <Label for="userName" hidden>
-                  User Name
-                </Label>
-                <Input
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="User Name"
-                  onChange = { this.handleChange }
-                />
-              </FormGroup>{" "}
-              <FormGroup>
-                <Label for="exampleEmail" hidden>
-                  Email
-                </Label>
-                <Input
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
-                  placeholder="Email"
-                  onChange = { this.handleChange }
-                />
-              </FormGroup>{" "}
-              <FormGroup>
-                <Label for="password" hidden>
-                  Password
-                </Label>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  onChange = { this.handleChange }
-                />
-              </FormGroup>{" "}
-              <Button color = "dark" style = {{marginTop: '2rem' }} block>Submit</Button>
-            </Form> */}
           </ModalBody>
-          {/* <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Cancel
-            </Button>
-          </ModalFooter> */}
+          
         </Modal>
       </div >
     );

@@ -4,6 +4,49 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require('./middleware/auth');
+const nodemailer = require("nodemailer");
+
+
+// async..await is not allowed in global scope, must use a wrapper
+async function main(email) {
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+      user: 'mrkhuram00@gmail.com',
+      pass: 'Khuram123@'
+    }
+    // host: 'smtp.ethereal.email',
+    // port: 587,
+    // secure: false, // true for 465, false for other ports
+    // auth: {
+    //     user: testAccount.user, // generated ethereal user
+    //     pass: testAccount.pass // generated ethereal password
+    // }
+  });
+  let token = jwt.sign(
+    { email },
+    'forgettingPassword',
+    { expiresIn: 3600 },
+  )
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: 'noreply@panacloud.com', // sender address
+    to: email, // list of receivers
+    subject: 'RESET PASSWORD', // Subject line
+    text: 'Your password reset code is ', // plain text body
+    html: `Your password reset code is given below, use the code within 1 hour. It will automatically expires after 1 hour.
+      <br><a href="${window.location.hostname}/verifying_token/${token}">${window.location.hostname}/verifying_token/${token}</a>` // html body
+  });
+
+  return info
+}
+
+
 
 
 router.post("/register", (req, res) => {
@@ -103,7 +146,7 @@ router.post("/update", (req, res) => {
     if (!user) {
       return res.status(400).json({ msg: "user does not exist " });
     }
- 
+
     // Validate password
     bcrypt.compare(oldpassword, user.password)
       .then(isMatch => {
@@ -123,7 +166,7 @@ router.post("/update", (req, res) => {
             updatedUser.password = hash
             // console.log(updatedUser);
             // console.log(user.password);
-            User.findOneAndUpdate({email}, {
+            User.findOneAndUpdate({ email }, {
               $set: {
                 username: user.username,
                 password: updatedUser.password
@@ -163,10 +206,72 @@ router.get('/user', auth, (req, res) => {
 
 router.get('/get_user', (req, res) => {
   User.find({}, function (err, userlist) {
-      res.json({
-        userlist
-      })
+    res.json({
+      userlist
+    })
   })
+})
+
+router.post('/forgotpassword', (req, res) => {
+  let email = req.body.email
+
+  // User.findOne({ email }).then(user => {
+  //   if (!user) {
+  //     return res.status(400).json({ msg: "user does not exist " });
+  //   }
+  main(email).then((resp) => {
+    if (resp) {
+      console.log(resp);
+
+    }
+  })
+
+
+})
+
+// })
+let token 
+router.get('/verifying_token/:token', (req, res) => {
+  token = req.params.token
+  //  let token = req.body.token
+  let decoded = jwt.verify(token, 'forgettingPassword')
+  console.log(decoded);
+  if (decoded) {
+    res.redirect(`/set_new_password`)
+  }
+
+})
+
+router.post('/change_password',(req,res)=>{
+console.log('working');
+let decoded = jwt.verify(token, 'forgettingPassword')
+let email = decoded.email
+let newPassword = req.body.password
+    
+
+  // hashing password 
+  bcrypt.genSalt(10, (err,salt)=>{
+    bcrypt.hash(newPassword, salt, (err,hash)=>{
+        if(err) throw err;
+        newPassword =  hash
+        User.findOneAndUpdate({email},{
+          $set: {
+            password: newPassword
+          }
+        },(err,doc)=>{
+          if(err){
+            console.log("there is an err" , err);
+            
+          }else{
+            console.log("successfuly updatae" ,  doc);
+            
+          }
+
+        })
+    })
+  })
+
+
 })
 router.post("/logout", (req, res) => { });
 

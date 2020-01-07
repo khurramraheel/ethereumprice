@@ -9,8 +9,14 @@ import { loaduser } from "./Redux/Actions/authActions";
 import store from "./Redux/Store";
 import BlogDetails from "./views/overview/blogDetail";
 import {connect} from "react-redux";
+import ForgotPassword from './views/LoginRegistration/forgotPw/forgotpw'
+import ErrPage from './views/LoginRegistration/forgotPw/ErrPage'
+import NewPassword from './views/LoginRegistration/setPassword/setPassword' ;
+// import setPassword from "./views/LoginRegistration/setPassword/setPassword";
 // import './App.css';
- 
+import VerifyToken from './views/LoginRegistration/setPassword/verifyToken' ;
+
+
 class App extends Component {
   componentDidMount() {
     store.dispatch(loaduser());
@@ -34,8 +40,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Template} />
             <Route exact path="/:fid/:sid" component={BlogDetails}/>
-            {/* <Route exact path="/login" component={Login} /> */}
-            {/* <Route exact path="/register" component={SignUp} /> */}
+            <Route exact path="/forgot_password" component={ForgotPassword}/>
+            
+            {/* <Route exact path='/token_verification/:token' component={VerifyToken} /> */}
+            <Route exact path="/set_new_password" component={NewPassword} />
+            <Route exact path="/token_err" component={ErrPage} />
           </Switch>
         </div>
       </Router>

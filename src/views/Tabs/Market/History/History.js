@@ -5,7 +5,7 @@ class History extends Component {
     super(props);
     this.state = {
       capitalDetail: [],
-      total: {}
+      total: {} 
     }
     getHistoryData = () => {
       const config = {
@@ -32,6 +32,9 @@ class History extends Component {
     }
     getHistoryData()
   }
+  styling = {
+    backgroundColor: "#295a299e"
+  }
   render() {
     return (
       <div>
@@ -51,16 +54,22 @@ class History extends Component {
               this.state.capitalDetail.map((capitalData, index) => {
                 let { price, quantity, capital } = capitalData
                 // console.log(capitalData)
+                
                 return (
-                  <tr>
-                    <th scope="row">{index + 1}</th>
+                  <tr 
+                 style={price == 0 ? { backgroundColor: "#295a299e" } : {backgroundColor: ""}}
+                    
+                    >
+                    <th scope="row" >{index + 1}</th>
                     <td>{price}</td>
                     <td>{quantity}</td>
                     <td>{capital}</td>
                     {/* <td>{checkAmount}</td> */}
                   </tr>
                 )
+                
               })
+            
             }
           </tbody>
           <tfoot>

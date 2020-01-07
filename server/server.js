@@ -9,9 +9,9 @@ var passport = require("passport");
 var Trade = require("./models/tradeSchema");
 var LocalStrategy = require("passport-local").Strategy;
 const cors = require('cors')
-
+const path = require('path')
 const userRoutes = require("./routes/userRoutes");
-const blogRoutes=require("./routes/blogRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 //newedit
 const tradeing = require("./routes/traderoute")
@@ -31,6 +31,18 @@ app.use(blogRoutes);
 // change
 app.use(tradeing)
 app.use(stock_I)
+app.use((err, req, res, next) => {
+    {
+        if (err) {
+            res.redirect('/token_err')
+        }
+    }
+})
+app.use('*', (req, res) => {
+
+    res.sendfile('./build/index.html',);
+
+});
 app.listen(port, () => console.log(`App listening on port ${port}`));
 
 

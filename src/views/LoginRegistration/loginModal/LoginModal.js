@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types'
 import { login } from '../../../Redux/Actions/authActions'
 import { clearErrors } from '../../../Redux/Actions/errorActions'
+import { forgotPassword} from '../../../Redux/Actions/authActions'
+import {Link} from 'react-router-dom'
 import {
   Button,
   Modal,
@@ -79,6 +81,10 @@ handleLogin = e => {
       modalOpen: !this.state.modalOpen
     });
   };
+  forgotPw = () => {
+    // this.props.forgotPassword(this.state)
+   
+  }
   render() {
       const { email, password } = this.state
     return (
@@ -154,7 +160,7 @@ handleLogin = e => {
                       </div>
                       <div className="hr" />
                       <div className="foot-lnk">
-                        <a href="#forgot" className = "chck">Forgot Password?</a>
+                      <a href="#forgot" className = "chck" onClick={this.forgotPw}><Link to="/forgot_password">Forgot Password? </Link></a>
                       </div>
                     </form>
                   </div>
@@ -208,4 +214,4 @@ const mapStateToProps = state => ({
     error: state.error
   });
 
-export default connect( mapStateToProps, { login, clearErrors })(LoginModal);
+export default connect( mapStateToProps, { login, clearErrors,forgotPassword })(LoginModal);

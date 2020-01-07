@@ -123,3 +123,6 @@ border-bottom: 2px solid #ccc;
     transform: rotate(360deg);
   }
 }
+.errHead{
+  color: black !important;
+}
