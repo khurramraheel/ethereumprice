@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 // let localPath = 'mongodb://localhost:27017/ethereum'
-let dbMame = 'mongodb+srv://ranausama48:etherumprice@cluster0-zqqr0.mongodb.net/test?retryWrites=true&w=majority'
- mongoose.connect( dbName, {
-    useNewUrlParser: true,
-    useCreateIndex: true
-})
-mongoose.connect(localPath, {
+let dbName = 'mongodb+srv://ranausama48:etherumprice@cluster0-zqqr0.mongodb.net/test?retryWrites=true&w=majority'
+//  mongoose.connect( dbName, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true
+// })
+let path = "mongodb+srv://ethereum1:ethereum123@cluster0-jukcx.mongodb.net/test?retryWrites=true&w=majority"
+let sirDaPath = 'mongodb+srv://khurran:1234@cluster0-77lw8.mongodb.net/test?retryWrites=true&w=majority'
+
+mongoose.connect(path, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false

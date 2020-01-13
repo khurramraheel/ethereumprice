@@ -216,11 +216,11 @@ class Issue extends Component {
                     aria-describedby="inputGroup-sizing-default" />
                 </div> */}
 
-                <p className="text-success">
+                {/* <p className="text-success">
                   {
-                    this.state.alertResult ? this.state.capital + " Are added to the Total of Capital" : null
+                    this.state.alertResult ? this.state.capital + " Are added to the Total of Profit" : null
                   }
-                </p>
+                </p> */}
               </div>
               <br />
               {/* <input type="radio" name='changeOpacity' value="enable" onChange={this.onDisable} /> Enable */}

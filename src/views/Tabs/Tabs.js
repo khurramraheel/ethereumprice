@@ -85,4 +85,4 @@ const mapStatetoprops = (store)=>({
 })
 
   
-export default connect(mapStatetoprops)(Tabs);
+export default connect(mapStatetoprops)(Tabs);  
