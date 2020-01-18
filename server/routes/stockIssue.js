@@ -71,4 +71,21 @@ stock_I.post('/addProfit', (req, res) => {
         console.log("response", capital)
     })
 })
+
+stock_I.post('/addbalance', (req, res) => {
+    let { balance, id } = req.body
+    User.findByIdAndUpdate(
+        id,
+        {
+            $set: {
+                c_balance: balance
+            }
+        },
+        { new: true },
+        (err, user) => {
+            console.log("this is err " + err, 'this is user here ' + user);
+        }
+    )
+
+})
 module.exports = stock_I

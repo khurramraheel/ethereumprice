@@ -30,10 +30,10 @@ class UserTab extends Component {
     }
     getUserData()
   }
-  addBalance = (id) => {
-    // console.log(id);
+  // addBalance = (id) => {
+  //   console.log(id);
 
-  }
+  // }
   render() {
     return (
       <div>
@@ -52,15 +52,15 @@ class UserTab extends Component {
             {
               // let count = 0;
               this.state.userList.map((capitalData, index) => {
-                let { username, email, _id } = capitalData
+                let { username, email, _id,c_balance } = capitalData
                 // console.log(capitalData)
                 return (
                   <tr>
                     <th scope="row">{index + 1}</th>
                     <td>{username}</td>
                     <td>{email}</td>
-                    <td>nothing</td>
-                    <td>
+                    <td>{c_balance ? c_balance : 0}</td>
+                    <td> 
                       <button className="btn btn-dark" onClick={() => {
                         this.props.balance(capitalData)
                         this.props.changeTab()

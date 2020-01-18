@@ -5,7 +5,7 @@ import History from './History/History'
 class Market extends Component {
   render() {
     return (
-      <div>
+      <div>  
         <div>
                 <ul className="nav nav-tabs " id="myTab" role="tablist">
                     <li className="nav-item col-lg-4" style={{padding:'0px'}}>

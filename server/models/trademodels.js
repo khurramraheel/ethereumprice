@@ -8,7 +8,7 @@ var Trade = mongoose.model('Trade', {
 
   },
   c_balance: {
-    type: String,
+    type: Number,
     required: true
   },
   checkAmount: {

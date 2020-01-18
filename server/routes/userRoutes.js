@@ -215,22 +215,22 @@ router.get('/get_user', (req, res) => {
 router.post('/forgotpassword', (req, res) => {
   let email = req.body.email
 
-  // User.findOne({ email }).then(user => {
-  //   if (!user) {
-  //     return res.status(400).json({ msg: "user does not exist " });
-  //   }
-  main(email).then((resp) => {
-    if (resp) {
-      console.log(resp);
-
+  User.findOne({ email }).then(user => {
+    if (!user) {
+      return res.status(400).json({ msg: "user does not exist " });
     }
+    main(email).then((resp) => {
+      if (resp) {
+        console.log(resp);
+
+      }
+    })
+
+
   })
 
-
 })
-
-// })
-let token 
+let token
 router.get('/verifying_token/:token', (req, res) => {
   token = req.params.token
   //  let token = req.body.token
@@ -242,32 +242,32 @@ router.get('/verifying_token/:token', (req, res) => {
 
 })
 
-router.post('/change_password',(req,res)=>{
-console.log('working');
-let decoded = jwt.verify(token, 'forgettingPassword')
-let email = decoded.email
-let newPassword = req.body.password
-    
+router.post('/change_password', (req, res) => {
+  console.log('working');
+  let decoded = jwt.verify(token, 'forgettingPassword')
+  let email = decoded.email
+  let newPassword = req.body.password
+
 
   // hashing password 
-  bcrypt.genSalt(10, (err,salt)=>{
-    bcrypt.hash(newPassword, salt, (err,hash)=>{
-        if(err) throw err;
-        newPassword =  hash
-        User.findOneAndUpdate({email},{
-          $set: {
-            password: newPassword
-          }
-        },(err,doc)=>{
-          if(err){
-            console.log("there is an err" , err);
-            
-          }else{
-            console.log("successfuly updatae" ,  doc);
-            
-          }
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(newPassword, salt, (err, hash) => {
+      if (err) throw err;
+      newPassword = hash
+      User.findOneAndUpdate({ email }, {
+        $set: {
+          password: newPassword
+        }
+      }, (err, doc) => {
+        if (err) {
+          console.log("there is an err", err);
 
-        })
+        } else {
+          console.log("successfuly updatae", doc);
+
+        }
+
+      })
     })
   })
 

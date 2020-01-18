@@ -29,30 +29,58 @@ export const stockSend = ({ price, quantity, capital, role }) => dispatch => {
     //  console.log(this.state.c_balance)
 }
 
-export const sendProfit = (role,profit) => {
-    return dispatch =>{
+export const sendProfit = (role, profit) => {
+    return dispatch => {
 
-    const config = {
-        headers: {
-            "Content-Type": "application/json"
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
         }
-    }  
-    let body = {role,profit}
-    console.log(body);
-    
-    axios.post('/addProfit', body, config)
-        .then(res => dispatch({
+        let body = { role, profit }
+        console.log(body);
 
-            type: "PROFIT_ADDED",
-            payload: res.data.capital
+        axios.post('/addProfit', body, config)
+            .then(res => dispatch({
 
-        }
-        )).then(res => {
-            getCapital()
-            getHistoryData()
-        })
-        .catch(err => console.log(err))
-        
+                type: "PROFIT_ADDED",
+                payload: res.data.capital
+
+            }
+            )).then(res => {
+                getCapital()
+                getHistoryData()
+            })
+            .catch(err => console.log(err))
+
     }
 
 }
+
+export const updateUserBalance = (state,id) => {
+    return dispatch => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        let {balance } = state
+        console.log(balance,id);
+        let body = {balance,id  }
+        axios.post('/addbalance', body, config)
+            .then(res => dispatch({
+
+                type: "BALANCE_ADDED",
+                payload: res.data.capital
+
+            }
+            )).then(res => {
+                getCapital()
+                getHistoryData()
+            })
+            .catch(err => console.log(err))
+
+    }
+}
+
+

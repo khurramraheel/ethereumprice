@@ -15,10 +15,9 @@ var User = mongoose.model('users', {
     type: String,
     required: true
   },
-  // balance: {
-  //   type: Number,
-  //   required: true
-  // },
+  c_balance: {
+    type: Number,
+  },
 });
 module.exports = User;
 

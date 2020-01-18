@@ -10,35 +10,35 @@ import {
     LOGOUT_SUCCESS,
     UPDATE_FAILED,
     UPDATE_SUCCESS
-  } from "./types";
-  import { returnErrors } from './errorActions';
+} from "./types";
+import { returnErrors } from './errorActions';
 
-  //RegisterUser
+//RegisterUser
 
-  export function register(data){
-      return dispatch => {
+export function register(data) {
+    return dispatch => {
 
-            const config = {
-                headers: {
-                    "Content-Type":"application/json"
-                }
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
             }
-            // const body = JSON.stringify({ username, email, password })
-            console.log(data);
-            
-            axios.post('/register', data, config)
-            .then( res => dispatch({
+        }
+        // const body = JSON.stringify({ username, email, password })
+        console.log(data);
+
+        axios.post('/register', data, config)
+            .then(res => dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data
             }))
-            .catch(err =>  
+            .catch(err =>
                 dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")),
                 dispatch({
-                type: REGISTER_FAILED,
-        
-            }))
-          } 
-  }
+                    type: REGISTER_FAILED,
+
+                }))
+    }
+}
 
 
 //   export const register = ({ username, email, password }) => dispatch => {
@@ -50,7 +50,7 @@ import {
 //     }
 //     const body = JSON.stringify({ username, email, password })
 //     console.log(body);
-    
+
 //     axios.post('/register', body, config)
 //     .then( res => dispatch({
 //         type: REGISTER_SUCCESS,
@@ -64,74 +64,74 @@ import {
 //     }))
 //   } 
 
-  //LOGIN USER
-  
+//LOGIN USER
 
-  export const login = ( {email, password} ) => dispatch => {
+
+export const login = ({ email, password }) => dispatch => {
     const config = {
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         }
     }
     const body = JSON.stringify({ email, password })
 
     axios.post('/login', body, config)
-    .then( res => dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data,
-      
-        
-    }))
-    .catch(err => 
-        dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")),
-        dispatch({
-        type: LOGIN_FAILED,
+        .then(res => dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data,
 
-    }))
-  }
 
-  export const update = ( {username, email, password, oldpassword} ) => dispatch => {
+        }))
+        .catch(err =>
+            dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")),
+            dispatch({
+                type: LOGIN_FAILED,
+
+            }))
+}
+
+export const update = ({ username, email, password, oldpassword }) => dispatch => {
     const config = {
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         }
     }
-    const body = { username, email, password, oldpassword}
+    const body = { username, email, password, oldpassword }
     console.log(body);
-     
+
 
     axios.post('/update', body, config)
-    .then( res => dispatch({
-        type: UPDATE_SUCCESS,
-        payload: res.data,
-      
-        
-    }))
-    .catch(err => 
-        dispatch(returnErrors(err.response.data, err.response.status, "UPdATE_FAIL")),
-        dispatch({
-        type: UPDATE_FAILED,
+        .then(res => dispatch({
+            type: UPDATE_SUCCESS,
+            payload: res.data,
 
-    }))
-  }
 
-  //LOGOUT USER
-  export const logout = () => {
-      return {
-          type: LOGOUT_SUCCESS
-      }
-  }
+        }))
+        .catch(err =>
+            dispatch(returnErrors(err.response.data, err.response.status, "UPdATE_FAIL")),
+            dispatch({
+                type: UPDATE_FAILED,
 
-  //Check Token & load user
-  export const loaduser = () => (dispatch, getState) => {
-      //user loading
-      dispatch({ type: USER_LOADING })
-     
-      axios.get('user', tokenConfig(getState))
-      .then(res => dispatch({
-          type: USER_LOADED,
-          payload:res.data,
-          
+            }))
+}
+
+//LOGOUT USER
+export const logout = () => {
+    return {
+        type: LOGOUT_SUCCESS
+    }
+}
+
+//Check Token & load user  
+export const loaduser = () => (dispatch, getState) => {
+    //user loading
+    dispatch({ type: USER_LOADING })
+    // let token  = JSON.parse(localStorage.getItem('token'))
+    axios.get('user', tokenConfig(getState))
+        .then(res => dispatch({
+            type: USER_LOADED,
+            payload: res.data,
+
         }))
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status))
@@ -139,73 +139,73 @@ import {
                 type: AUTH_ERROR
             })
         })
-  }
-  //Setup config/headers & token
+}
+//Setup config/headers & token
 
-  export const tokenConfig = getState => {
- //Get token from localstorage
- const token = getState().auth.token;
+export const tokenConfig = getState => {
+    //Get token from localstorage
+    const token = getState().auth.token;
 
- //Headers
- const config = {
-     headers:{
-         "Content-type":"application/json"
-     }
- }
- //If token , add to headers
- if(token){
-     config.headers['x-auth-token'] = token
- }
- return config
-  }
-
-
-  
-export const forgotPassword = (data) => {
-    return dispatch =>{
-
+    //Headers
     const config = {
         headers: {
-            "Content-Type": "application/json"
+            "Content-type": "application/json"
         }
-    }  
+    }
+    //If token , add to headers
+    if (token) {
+        config.headers['x-auth-token'] = token
+    }
+    return config
+}
 
-    axios.post('/forgotpassword',data, config)
-        .then(res => dispatch({
 
-            type: "FORGOT_PASSWORD",
-            payload: res.data.capital
 
+export const forgotPassword = (data) => {
+    return dispatch => {
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
         }
-        ))
-        .catch(err => console.log(err))
-        
+
+        axios.post('/forgotpassword', data, config)
+            .then(res => dispatch({
+
+                type: "FORGOT_PASSWORD",
+                payload: res.data.capital
+
+            }
+            ))
+            .catch(err => console.log(err))
+
     }
 
 }
 
-  
+
 export const setNewPassword = (data) => {
-    return dispatch =>{
+    return dispatch => {
 
-    const config = {
-        headers: {
-            "Content-Type": "application/json"
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
         }
-    }  
-    console.log(data);
-    
-    
-    axios.post('/change_password',data)
-        .then(res => dispatch({
+        console.log(data);
 
-            type: "PASSWORD_CHANGED",
-            payload: res.data.capital
 
-        }
-        ))
-        .catch(err => console.log(err))
-        
+        axios.post('/change_password', data)
+            .then(res => dispatch({
+
+                type: "PASSWORD_CHANGED",
+                payload: res.data.capital
+
+            }
+            ))
+            .catch(err => console.log(err))
+
     }
 
 }

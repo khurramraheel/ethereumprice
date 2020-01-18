@@ -22,13 +22,13 @@ import axios from 'axios'
                 user
             })
             axios.post('/showTrade', body, config)
-                .then(res =>
-                    // console.log(res)
-                    this.setState({
-                        tradeDetail: res.data.trades
-                    })
-                    // res.json()
+            .then(res =>
+                this.setState({
+                    tradeDetail: res.data.trades
+                })
+                // res.json()
                 )
+                
                 .catch(err => {})
         }
         getTradeData()

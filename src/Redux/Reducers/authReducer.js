@@ -27,6 +27,8 @@ export default function (state = initialState, action) {
       };
       break;
     case USER_LOADED:
+      console.log(action.payload);
+      
       return {
         ...state,
         isAuthenticated: true,

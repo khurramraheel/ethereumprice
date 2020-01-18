@@ -38,6 +38,8 @@ app.use((err, req, res, next) => {
         }
     }
 })
+app.use(express.static('./build'))
+
 app.use('*', (req, res) => {
 
     res.sendfile('./build/index.html',);

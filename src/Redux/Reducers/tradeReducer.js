@@ -17,7 +17,7 @@ import {
         // Trad_date:'',
         // eth_quantity:'',
         // userID:''
-  };
+  }; 
   
    function tradeing(state = initialState, action) {
     switch (action.type) {
