@@ -30,7 +30,10 @@ import {
         };
         
         break;
-      
+        case "USER_LOADED_AFTER_C_BALANCE":
+          console.log(action.payload);
+          
+        break;
       default:
         return state;
     }

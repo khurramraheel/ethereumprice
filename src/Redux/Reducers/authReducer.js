@@ -26,6 +26,7 @@ export default function (state = initialState, action) {
         isLoading: true
       };
       break;
+      
     case USER_LOADED:
       console.log(action.payload);
       

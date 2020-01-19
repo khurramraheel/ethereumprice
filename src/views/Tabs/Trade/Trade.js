@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { tradeing } from '../../../Redux/Actions/tradeAction'
 import axios from 'axios'
 import './style.css'
+import { loaduser } from '../../../Redux/Actions/authActions'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 class Trade extends Component {
 
     constructor(props) {
@@ -19,10 +24,16 @@ class Trade extends Component {
             c_balance: 25000,
             // c_balance:  this.props.trade.trade_info.c_balance
         }
-        getUser = ()=>{
-           console.log('working in trade js');
-           
-        }    
+        getUser = (good) => {
+            console.log('working in trade js', good);
+            if (good == 'err') {
+                return this.notifyErr()
+            }
+            if(good == 'good'){
+                this.notify()
+            }
+            props.loaduser()
+        }
         getUser()
     }
     date = () => {
@@ -55,7 +66,7 @@ class Trade extends Component {
             })
         // console.log(this.state.eth_price)
         var ETH_in_usd = +Math.round(this.state.eth_price)
-        this.setState({ eth_price: ETH_in_usd,c_balance: this.props.authdata.user.c_balance })
+        this.setState({ eth_price: ETH_in_usd, c_balance: this.props.authdata.user.c_balance })
     }
     componentDidMount() {
         this.refs.subAmount.disabled = true
@@ -71,7 +82,7 @@ class Trade extends Component {
     }
 
 
-    
+
 
 
 
@@ -115,14 +126,17 @@ class Trade extends Component {
 
         }
     }
-
+    notify = () => toast.success("Successfuly Added", { autoClose: 2000 });
+    notifyErr = () => toast.error("Sorry your request didn't complete", { autoClose: 2000 })
     buyEthereum = () => {
         this.state.userID = this.props.authdata.user._id
-        let usertrade = this.state 
+        let usertrade = this.state
         this.props.tradeing(usertrade)
         console.log(usertrade)
         console.log(this.props.trade);
-        
+        this.refs.eth_quantity.value = ''
+
+
     }
     //     buyEthereum = dispatch => {
     //          const config = {
@@ -207,6 +221,7 @@ class Trade extends Component {
         return (
             <div>
                 <div class="card text-center align-items-center " >
+                    <ToastContainer />
 
                     <div class="card-body col-md-6 " style={{ backgroundColor: 'black !important' }}>
                         <div class="input-group mb-3" >
@@ -220,7 +235,7 @@ class Trade extends Component {
                                 aria-label="Sizing example input"
                                 value={this.props.authdata.user.c_balance}
                                 // value={this.props.trade.trade_info.c_balance}
-                                
+
                                 ref="c_balance"
                                 style={{ background: "#23272B", color: "white" }}
                                 aria-describedby="inputGroup-sizing-default" />
@@ -286,21 +301,21 @@ class Trade extends Component {
     }
 }
 // const mapStateToProps = state => (
-    
+
 //     {
 //         authdata: state.auth,
 //         trade: state.tradeing
 //     }
 // );
 
-let mapStateToProps = (store)=>{
+let mapStateToProps = (store) => {
     console.log(store);
-    
-    return{
+
+    return {
         authdata: store.auth,
         trade: store.tradeing
     }
-    
+
 }
-export default connect(mapStateToProps, { tradeing })(Trade)
+export default connect(mapStateToProps, { tradeing, loaduser })(Trade)
 export let getUser;

@@ -1,8 +1,13 @@
 import axios from "axios";
 // import {getTradeData} from "../../views/Tabs/Transactions/Transaction"
 import { getTradeData } from '../../views/Tabs/transactions/Transaction'
+import { useReducer } from "react";
 // import {changeBalance} from '../../views/Tabs/Trade/Trade'
-import { getUserData } from '../../views/Tabs/Users/usersTab/usersTab'
+// import { getUserData } from '../../views/Tabs/Users/usersTab/usersTab'
+// import { loaduser } from './authActions'
+import { getUser } from '../../views/Tabs/Trade/Trade'
+
+
 export const tradeing = (body) => dispatch => {
 
     const config = {
@@ -18,14 +23,22 @@ export const tradeing = (body) => dispatch => {
             getTradeData()
             //  console.log('checkkk,',res.data.trade)
             return res
-        }).then(res => dispatch({
+        }).then(res => {
+            return dispatch({
 
-            type: "YOU_BUY_ETHEREUM",
-            payload: res.data.trade
-        })).then(res => {
-            console.log('checkkk,', res)
-            getUserData()
+                type: "YOU_BUY_ETHEREUM",
+                payload: res.data.trade
+            })
+        }).then(() => {
+            let good = 'good'
+            getUser(good)
+
+        }).catch(err => {
+            console.log(err)
+            let errr = "err"
+            getUser(errr)
         })
-        .catch(err => console.log(err))
     //  console.log(this.state.c_balance)
-} 
+}
+
+

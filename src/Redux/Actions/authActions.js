@@ -126,7 +126,6 @@ export const logout = () => {
 export const loaduser = () => (dispatch, getState) => {
     //user loading
     dispatch({ type: USER_LOADING })
-    // let token  = JSON.parse(localStorage.getItem('token'))
     axios.get('user', tokenConfig(getState))
         .then(res => dispatch({
             type: USER_LOADED,
