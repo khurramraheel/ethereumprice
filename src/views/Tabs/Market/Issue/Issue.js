@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { stockSend } from '../../../../Redux/Actions/stockAction'
 import { sendProfit } from '../../../../Redux/Actions/stockAction'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Count from '../Status/Status'
 class Issue extends Component {
@@ -15,8 +16,17 @@ class Issue extends Component {
       alertResult: false,
       profit: ''
     }
+    gettUser = (good) => {
+      console.log('working in trade js', good);
+      if (good == 'err') {
+        return this.notifyErr()
+      }
+      if (good == 'good') {
+        this.notify()
+      }
+    }
+    gettUser()
 
-    //console.log(this.props.Userrole)
 
   }
   componentDidMount() {
@@ -97,14 +107,22 @@ class Issue extends Component {
     document.getElementById('profit').value = '';
 
   }
+
+  notify = () => toast.success("Successfuly Added", { autoClose: 2000 });
+  notifyErr = () => toast.error("Sorry your request didn't complete", { autoClose: 2000 })
+
+
+
+
   render() {
     console.log(this.state)
     console.log(this.props.msg)
     return (
 
       <div>
+        <ToastContainer />
+
         <div >
-          {/* Issue Side */}
 
           <div class="card text-center align-items-center row"
             style={{
@@ -145,29 +163,13 @@ class Issue extends Component {
                     aria-describedby="inputGroup-sizing-default"
                   />
                 </div>
-                {/* <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Total Capital</span>
-                        </div>
-                        <input  type="text" 
-                        disabled
-                        value={this.state.capital}
-                            id="totalCapital"
-                            ref="T_capital"
-                            name="t_capital"
-                            //onChange={this.changehandler}
-                            className="form-control p-4 text-white border-0"
-                            aria-label="Sizing example input" 
-                            style={{ background: "#23272B", color: "white" }}
-                            aria-describedby="inputGroup-sizing-default"/>
-                    </div> */}
+
                 <p className="text-success">
                   {
                     this.state.alertResult ? this.state.capital + " Are added to the Total of Capital" : null
                   }
                 </p>
               </div>
-              {/* <input type="radio" name='changeOpacity' value='disable' onChange={this.onDisable} /> Disable */}
 
               <div class="card-footer text-muted">
                 <button type="submit"
@@ -201,57 +203,38 @@ class Issue extends Component {
                     style={{ background: "#23272B", color: "white" }}
                     aria-describedby="inputGroup-sizing-default" />
                 </div>
-                {/* <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Qty</span>
-                  </div>
-                  <input type="text"
-                    id="Quantity"
-                    ref="quantity"
-                    name="quantity"
-                    onChange={this.changehandler}
-                    className="form-control p-4 text-white border-0"
-                    aria-label="Sizing example input"
-                    style={{ background: "#23272B", color: "white" }}
-                    aria-describedby="inputGroup-sizing-default" />
-                </div> */}
 
-                {/* <p className="text-success">
-                  {
-                    this.state.alertResult ? this.state.capital + " Are added to the Total of Profit" : null
-                  }
-                </p> */}
               </div>
               <br />
-              {/* <input type="radio" name='changeOpacity' value="enable" onChange={this.onDisable} /> Enable */}
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1" onChange={this.onDisable}/>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" onChange={this.onDisable} />
                 <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
               </div>
-                <div class="card-footer text-muted"
-                  style={{ marginTop: 10 }}>
-                  <button type="submit"
-                    onClick={this.sendProfit}
-                    ref="subIssue"
-                    className="input-grouptext btn btn-dark px-5 border-0"
-                    style={{ backgrund: "", color: "white", fontWeight: "600", textAlign: 'right' }}
-                  >
-                    Profit
+              <div class="card-footer text-muted"
+                style={{ marginTop: 10 }}>
+                <button type="submit"
+                  onClick={this.sendProfit}
+                  ref="subIssue"
+                  className="input-grouptext btn btn-dark px-5 border-0"
+                  style={{ backgrund: "", color: "white", fontWeight: "600", textAlign: 'right' }}
+                >
+                  Profit
                 </button>
-                </div>
               </div>
-
             </div>
+
           </div>
         </div>
-        )
-      }
-    }
+      </div>
+    )
+  }
+}
 const mapStatetoprops = state => ({
-          //Userrole : state.auth.user.role
-          //email : state.auth.user.email
-          role: state.auth.user.role,
-        msg: state.stockIssue
-      
-      })
-export default connect(mapStatetoprops, {stockSend, sendProfit})(Issue)
+  //Userrole : state.auth.user.role
+  //email : state.auth.user.email
+  role: state.auth.user.role,
+  msg: state.stockIssue
+
+})
+export default connect(mapStatetoprops, { stockSend, sendProfit })(Issue)
+export let gettUser

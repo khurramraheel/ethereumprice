@@ -2,6 +2,7 @@ import axios from "axios";
 import { getCapital } from '../../views/Tabs/Market/Status/Status'
 import { getHistoryData } from '../../views/Tabs/Market/History/History'
 //import {getTradeData} from "../../views/Tabs/Transactions/Transaction"  
+import { gettUser } from '../../views/Tabs/Market/Issue/Issue'
 export const stockSend = ({ price, quantity, capital, role }) => dispatch => {
 
     console.log("stock data with user role =", role)
@@ -23,10 +24,15 @@ export const stockSend = ({ price, quantity, capital, role }) => dispatch => {
         ).then(res => {
             getCapital()
             getHistoryData()
+            let good = 'good'
+            gettUser(good)
         })
 
-        .catch(err => console.log(err))
-    //  console.log(this.state.c_balance)
+        .catch(err => {
+            let errr = "err"
+            gettUser(errr)
+            console.log(err)
+        })
 }
 
 export const sendProfit = (role, profit) => {
@@ -48,25 +54,33 @@ export const sendProfit = (role, profit) => {
 
             }
             )).then(res => {
+
                 getCapital()
                 getHistoryData()
+                let good = 'good'
+                gettUser(good)
+
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                let errr = "err"
+                gettUser(errr)
+                console.log(err)
+            })
 
     }
 
 }
 
-export const updateUserBalance = (state,id) => {
+export const updateUserBalance = (state, id) => {
     return dispatch => {
         const config = {
             headers: {
                 "Content-Type": "application/json"
             }
         }
-        let {balance } = state
-        console.log(balance,id);
-        let body = {balance,id  }
+        let { balance } = state
+        console.log(balance, id);
+        let body = { balance, id }
         axios.post('/addbalance', body, config)
             .then(res => dispatch({
 

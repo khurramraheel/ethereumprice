@@ -138,86 +138,12 @@ class Trade extends Component {
 
 
     }
-    //     buyEthereum = dispatch => {
-    //          const config = {
-    //              headers: {
-    //                  "Content-Type": "application/json"
-    //              }
-    //          }
-    //         let {
-    //             eth_price,
-    //             c_balance,
-    //             checkAmount,
-    //             // c_date,
-    //             // username
-    //         } = this.state
-
-    //          const body = JSON.stringify({
-    //              eth_price,
-    //              c_balance,
-    //              checkAmount,
-    //             //  c_date,
-    //             //  username
-    //          })
-    //          axios.post('/trade', body, config)
-    //              .then(res => {
-    //                  return res
-    //              }).then(res => dispatch =>({
-    //                  type:"YOU_BUY_ETHEREUM",
-    //                  payload:res.data
-    //              }))
-    //              .catch(err => console.log(err))
-    //         //  console.log(this.state.c_balance)
-    // // >>>>>>> Stashed changes
-    //     }
-    // buyEthereum = dispatch => {
-
-    //      const config = {
-    //          headers: {
-    //              "Content-Type": "application/json"
-    //          }
-    //      }
-    //     // let {
-    //     //     eth_price,
-    //     //     c_balance,
-    //     //     checkAmount,
-    //     //     Trad_date,
-    //     //     eth_quantity
-    //     // } = this.state
-
-    //      this.state.userID = this.props.authdata.user._id;
-
-    //      const body = JSON.stringify(this.state);
-
-
-
-    //      axios.post('/trade', body, config)
-    //          .then(res => {
-    //              console.log('checkkk,',res.data.trade)
-    //              return res
-    //          }).then(res => dispatch({
-
-    //              type:"YOU_BUY_ETHEREUM",
-    //              payloda:res.data.trade
-    //          }))
-    //          .catch(err => console.log(err))
-
-    //this.refs.subAmount.disabled=false;
-
-    // changeBalance =()=>{
-    //     this.setState({
-    //         c_balance: this.props.trade.trade_info.c_balance
-    //     })
-    // }
-
+   
     render() {
 
 
-        // console.log(this.state)
 
         const { isAuthenticated, user } = this.props.authdata;
-        //  console.log('check user', user)
-        //console.log(this.props.tradeData)
         return (
             <div>
                 <div class="card text-center align-items-center " >
